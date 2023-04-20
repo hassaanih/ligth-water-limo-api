@@ -13,17 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('booking_meta', function (Blueprint $table) {
+        Schema::create('booking_details', function (Blueprint $table) {
             $table->id();
             $table->date('pickup_date')->nullable(false);
             $table->time('pickup_time')->nullable(false);
             $table->integer('total_stops')->nullable(false);
             $table->string('pickup_location')->nullable(false);
             $table->string('drop_location')->nullable(false);
-            $table->integer('travellers')->nullable(false);
-            $table->integer('kids')->nullable(false);
-            $table->integer('bags')->nullable(false);
-            $table->float('total_km', 5, 2)->nullable(false);
+            $table->integer('travellers')->nullable(false)->default(0);
+            $table->integer('kids')->nullable(false)->default(0);
+            $table->integer('bags')->nullable(false)->default(0);
+            $table->float('total_km', 5, 2)->nullable(false)->default(0);
             $table->timestamps();
         });
     }
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('booking_meta');
+        Schema::dropIfExists('booking_details');
     }
 };
