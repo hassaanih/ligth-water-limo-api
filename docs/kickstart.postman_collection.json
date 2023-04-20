@@ -1,0 +1,867 @@
+{
+	"info": {
+		"_postman_id": "485b3a3a-e6ef-4e13-84b0-9898b6790c20",
+		"name": "Kickstart",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20017134"
+	},
+	"item": [
+		{
+			"name": "App",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "SignIn",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"job_availability_id\":1,\r\n    \"job_type_id\":1,\r\n    \"country_id\":1,\r\n    \"min_pay_rate\":0,\r\n    \"max_pay_rate\":100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/user/allpost",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"allpost"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signout",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/user/signout",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"signout"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Signup",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "company_name",
+											"value": "Systems inc",
+											"type": "text"
+										},
+										{
+											"key": "company_address",
+											"value": "Shahrah e faisal",
+											"type": "text"
+										},
+										{
+											"key": "first_name",
+											"value": "inaam",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "kareem",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "inam@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "mobile_number",
+											"value": "03052373073",
+											"type": "text"
+										},
+										{
+											"key": "service_ids[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "service_ids[]",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "details",
+											"value": "hi everone this is inam",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/requestdemo/store",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"requestdemo",
+										"store"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Test",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "inaam",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "kareem",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "inam@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "mobile_number",
+											"value": "03052373073",
+											"type": "text"
+										},
+										{
+											"key": "details",
+											"value": "hi everone this is inam",
+											"type": "text"
+										},
+										{
+											"key": "photo_path",
+											"type": "file",
+											"src": "/C:/Users/user/Desktop/Synergates/Photos/5.jpg"
+										},
+										{
+											"key": "development_type_ids[]",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "development_type_ids[]",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/talenthunt/store",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"talenthunt",
+										"store"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Profile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "inaam",
+											"type": "text"
+										},
+										{
+											"key": "profile_photo",
+											"type": "file",
+											"src": "/C:/Users/user/Desktop/Synergates/Photos/no_image.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/user/update",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"update"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Email OTP",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/sendemailotp/5",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"sendemailotp",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "findAll",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/user/findall",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"findall"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Email OTP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":5,\r\n    \"otp_code\" : 123456\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/verifyemailotp",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"verifyemailotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Send Mobile OTP",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/user/sendmobileotp/5",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"sendmobileotp",
+										"5"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Verify Mobile OTP",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"otp_code\" : 123456\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/user/verifymobileotp",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"verifymobileotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Change Password",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n   \"current_password\":\"1234\",\r\n   \"new_password\":\"password\",\r\n   \"confirm_password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/user/resetpasswordusingcurrent",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"user",
+										"resetpasswordusingcurrent"
+									],
+									"query": [
+										{
+											"key": "username",
+											"value": "test",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Lookup",
+					"item": [
+						{
+							"name": "List Country",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"page_size\" : 10,\r\n    \"page\" : 1,\r\n    \"sort_by\" : \"id\",\r\n    \"sort_order\" : \"asc\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/lookupcountry/list",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"lookupcountry",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List State",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"country_id\" : 167,\r\n    \"page_size\" : 10,\r\n    \"page\" : 1,\r\n    \"sort_by\" : \"id\",\r\n    \"sort_order\" : \"asc\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/lookupstate/list",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"lookupstate",
+										"list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List City",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"state_id\":3175\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{API_BASE_URL}}/api/lookupcity/list",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"lookupcity",
+										"list"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "Delete All",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "{{TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{API_BASE_URL}}/user/deleteall",
+									"host": [
+										"{{API_BASE_URL}}"
+									],
+									"path": [
+										"user",
+										"deleteall"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Sample",
+			"item": [
+				{
+					"name": "Sample/Secure/Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "field_1",
+									"value": "Test Value",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8001/sample/secure/post",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"sample",
+								"secure",
+								"post"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToDo/Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"field_1\": \"Field 1 .\",\r\n    \"field_2\": \"Field 2 .\",\r\n    \"field_3\": \"2021-01-01\",\r\n    \"field_4\": 99.98,\r\n    \"to_do_comments\" : [\r\n        {\"field_1\":\"test\",\"field_2\":\"test\",\"field_4\":\"10.00\"}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/todo/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"todo",
+								"create"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToDo/Update",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\" : 5,\r\n    \"field_1\": \"Field 1 11\",\r\n    \"field_2\": \"Field 2 22\",\r\n    \"field_4\":\"10.78\",\r\n    \"to_do_comments\" : [\r\n        {\"id\": 2, \"field_1\":\"test updated\",\"field_2\":\"test updatesss\"}\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/todo/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"todo",
+								"update"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToDo/FindAll",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"select\" : [\"field_1\", \"field_4\"],\r\n    \"where\" : {\r\n        \"field_1\": \"Field 1 11\",\r\n        \"field_2\": \"Field 2 22\",\r\n        \"field_4\": -1\r\n    },\r\n    \"order_by_fields\" : \"field_4\",\r\n    \"order_by_order\" : \"asc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/todo/findall",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"todo",
+								"findall"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToDo/Find",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{TOKEN}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"select\" : [\"field_1\", \"field_4\"],\r\n    \"where\" : {\r\n        \"field_1\": \"Field 1 11\",\r\n        \"field_2\": \"Field 2 22\",\r\n        \"field_4\": -1\r\n    },\r\n    \"order_by_fields\" : \"field_4\",\r\n    \"order_by_order\" : \"asc\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/todo/find/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"todo",
+								"find",
+								"1"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

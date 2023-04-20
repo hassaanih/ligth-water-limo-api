@@ -1,0 +1,52 @@
+
+############### LET's SETUP ###############
+
+1. create database. lets name it kickstart
+2. copy .env.example as .env
+3. moidify .env for database connection strings. and then run following command from project dirctory console
+  > composer install
+  > composer dump-autoload 
+4. generate key 
+  > php artisan key:generate
+
+5. Create database tables : run following command from project dirctory console
+  > php artisan migrate
+
+6. Sample Data : run following command from project dirctory console
+  run following command from project dirctory.
+    > php artisan db:seed
+
+
+7. Run the service 
+  php -S localhost:8001 -t public
+  
+
+8. Run following command from public folder.
+   8.1 For windows
+       for "making link" run as administrator
+       > cd c:\xampp\htdocs\laravel_kickstart_api\public
+       > mklink /D "storage\" "C:/xampp/htdocs/laravel_kickstart_api/storage/app"
+   8.2 For Linux
+       > cd /var/www/html/fifme_api/public/
+       ln -s /var/www/html/fifme_api/storage/app storage 
+
+9. setup scheduler
+   php artisan schedule:run
+
+10. run command for queue
+    php artisan queue:work
+
+11. run php development service
+    php artisan service
+############### HURRAH WE DID IT ###############
+
+############### Extra Setup : Start ###############
+
+1. How to resolve WAMPP SSL Certificate 
+  1.1 Copy  setup/cert folder at D:
+  1.2 modify php.ini and point path to certifcate path
+      curl.cainfo=D:\cert\cacert.pem
+
+
+
+############### Extra Setup : End ###############

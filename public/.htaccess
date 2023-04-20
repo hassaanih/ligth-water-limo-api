@@ -4,7 +4,11 @@
     </IfModule>
 
     RewriteEngine On
-
+	
+	# for prfligh option method 200 OK
+    RewriteCond %{REQUEST_METHOD} OPTIONS 
+    RewriteRule ^(.*)$ 200.html [QSA,L]
+	
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

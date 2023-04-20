@@ -1,20 +1,34 @@
 <?php
 
+use App\Http\Controllers\Api\Web\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
-Route::get('abc/abc', 'App\Http\Controllers\TestController@create');
+// App Lookup List
+Route::post('lookupcountry/list', 'App\Http\Controllers\Api\Common\LookupCountryController@list');
+Route::post('lookupstate/list', 'App\Http\Controllers\Api\Common\LookupStateController@list');
+Route::post('lookupcity/list', 'App\Http\Controllers\Api\Common\LookupCityController@list');
 
+Route::prefix('user')->controller(UserController::class)->group(function () {
+    Route::post('findall', 'findAll');
+    Route::post('create', 'create');
+    Route::post('signin', 'signin');
+    Route::get('signout', 'signout');
+    Route::get('sendemailotp/{id}', 'sendEmailOtp');
+    Route::post('verifyemailotp', 'verifyEmailOtp');
+    Route::get('sendmobileotp/{id}', 'sendMobileOtp');
+});
+
+Route::post('send/response/list', 'App\Http\Controllers\Api\Web\TodoController@postList');
+Route::get('send/response/{responseCode}', 'App\Http\Controllers\Api\Web\TodoController@getList');
+
+/*
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+*/
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::post('user/update', 'App\Http\Controllers\Api\Web\UserController@update');
+    Route::post('user/resetpasswordusingcurrent', 'App\Http\Controllers\Api\Web\UserController@resetPasswordUsingCurrentPassword');
 });
