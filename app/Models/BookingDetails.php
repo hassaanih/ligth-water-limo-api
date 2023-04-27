@@ -12,6 +12,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int    $bags
  * @property int    $created_at
  * @property int    $updated_at
+ * @property int    $vehicle_type_id
+ * @property int    $vehicle_id
  * @property string $pickup_location
  * @property string $drop_location
  * @property float  $total_km
@@ -38,7 +40,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $fillable = [
-        'pickup_date', 'pickup_time', 'total_stops', 'pickup_location', 'drop_location', 'travellers', 'kids', 'bags', 'total_km', 'created_at', 'updated_at'
+        'pickup_date', 'pickup_time', 'total_stops', 'pickup_location', 'drop_location', 'travellers', 'kids', 'bags', 'total_km', 'created_at', 'updated_at', 'vehicle_type_id', 'vehicle_id'
     ];
 
     /**
@@ -56,7 +58,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $casts = [
-        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
+        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int'
     ];
 
     /**
