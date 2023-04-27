@@ -32,3 +32,6 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('user/update', 'App\Http\Controllers\Api\Web\UserController@update');
     Route::post('user/resetpasswordusingcurrent', 'App\Http\Controllers\Api\Web\UserController@resetPasswordUsingCurrentPassword');
 });
+
+Route::post('booking/details/create', 'App\Http\Controllers\Api\Web\BookingController@createBookingDetails');
+Route::post('booking/create', 'App\Http\Controllers\Api\Web\BookingController@createBooking');
