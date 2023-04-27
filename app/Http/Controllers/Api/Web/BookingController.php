@@ -28,7 +28,7 @@ class BookingController extends BaseController
      */
     public function createBookingDetails(Request $request)
     {
-        $reqParams = $request->json()->all();
+        $reqParams = $request->all();
 
         $validator = Validator::make($reqParams, [
             'pickup_date' => 'required',
@@ -42,7 +42,8 @@ class BookingController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            $response['error'] = $validator->errors();
+            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
 
         $booking_details = new BookingDetails($reqParams);
@@ -59,7 +60,7 @@ class BookingController extends BaseController
      */
     public function createBooking(Request $request)
     {
-        $reqParams = $request->json()->all();
+        $reqParams = $request->all();
 
         $validator = Validator::make($reqParams, [
             'first_name' => 'required',
@@ -73,7 +74,8 @@ class BookingController extends BaseController
         ]);
 
         if ($validator->fails()) {
-            return $this->sendError('Validation Error.', $validator->errors());
+            $response['error'] = $validator->errors();
+            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
 
         $booking = new Bookings($reqParams);
