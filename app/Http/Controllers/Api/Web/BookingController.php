@@ -16,9 +16,11 @@ class BookingController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function test()
     {
-        //
+        printf('hello');
+        return $this->sendResponse('done', Response::HTTP_OK);
+ 
     }
 
     /**
