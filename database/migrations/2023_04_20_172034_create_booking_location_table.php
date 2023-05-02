@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('booking_location', function (Blueprint $table) {
             $table->id();
-            $table->integer('booking_id')->nullable(false);
-            $table->integer('location_id')->nullable(false);
+            $table->integer('booking_details_id')->nullable(false);
+            $table->text('location')->nullable(false);
             $table->integer('location_type_id')->nullable(false);
             $table->timestamps();
         });

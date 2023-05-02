@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\LookupVehicles;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,7 +20,8 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             LookupCountryTableSeeder::class,
             LookupStateTableSeeder::class,
-            LookupCityTableSeeder::class
+            LookupCityTableSeeder::class,
+            LookupVehicles::class
         ]);
     }
 }

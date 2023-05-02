@@ -47,6 +47,15 @@ class BookingController extends BaseController
             $response['error'] = $validator->errors();
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
+        foreach ($reqParams['booking_stops'] as $stop) {
+            
+            
+        }
+        return;
+        // dd($reqParams);
+        if($reqParams['booking_stops']){
+
+        }
 
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
@@ -93,9 +102,28 @@ class BookingController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function selectVehicle(Request $request)
     {
-        //
+        $reqParams = $request->all();
+        $response = [];
+
+        $validator = Validator::make($reqParams, [
+            'id' => 'required',
+            'vehicle_id' => 'required',
+            'vehicle_type_id' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            $response['error'] = $validator->errors();
+            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $booking_details = BookingDetails::find($reqParams['id']);
+        $booking_details->vehicle_id = $reqParams['vehicle_id'];
+        $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
+        $booking_details->update();
+        $response['booking_details'] = $booking_details;
+        return $this->sendResponse($response, Response::HTTP_OK);
     }
 
     /**
