@@ -17,11 +17,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            UserTableSeeder::class,
-            LookupCountryTableSeeder::class,
-            LookupStateTableSeeder::class,
-            LookupCityTableSeeder::class,
-            LookupVehicles::class
+            // UserTableSeeder::class,
+            // LookupCountryTableSeeder::class,
+            // LookupStateTableSeeder::class,
+            // LookupCityTableSeeder::class,
+            LookupVehiclesTableSeeder::class,
+            VehicleTypesTableSeeder::class,
+            LookupLocationTypesTableSeeder::class
+            
         ]);
     }
 }
