@@ -9,6 +9,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
+use Stripe\Stripe;
+use Stripe\Charge;
 
 class TodoController extends BaseController
 {
@@ -48,5 +50,18 @@ class TodoController extends BaseController
 
         // return $reqParams['code'];
         return response()->json($response, $reqParams['code']);
+    }
+
+    public function testStripe(Request $request){
+        try {
+            $charge = Charge::create([
+                'amount' => $request->amount,
+                'currency' => 'usd',
+                'source' => $request->stripeToken,
+            ]);
+            return response()->json(['success' => true, 'message' => 'Payment successful']);
+        } catch (Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Payment failed: ' . $e->getMessage()]);
+        }
     }
 }

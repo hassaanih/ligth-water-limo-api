@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $booking_id
- * @property int $location_id
+ * @property string $location
  * @property int $location_type_id
  * @property int $created_at
  * @property int $updated_at
@@ -33,7 +33,7 @@ class BookingLocation extends Model
      * @var array
      */
     protected $fillable = [
-        'booking_id', 'location_id', 'location_type_id', 'created_at', 'updated_at'
+        'booking_id', 'location', 'location_type_id', 'created_at', 'updated_at'
     ];
 
     /**
@@ -41,9 +41,7 @@ class BookingLocation extends Model
      *
      * @var array
      */
-    protected $hidden = [
-        
-    ];
+    protected $hidden = [];
 
     /**
      * The attributes that should be casted to native types.
@@ -51,7 +49,7 @@ class BookingLocation extends Model
      * @var array
      */
     protected $casts = [
-        'booking_id' => 'int', 'location_id' => 'int', 'location_type_id' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
+        'booking_id' => 'int', 'location' => 'string', 'location_type_id' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
     ];
 
     /**

@@ -12,9 +12,10 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $mobile_number
  * @property string $email
  * @property int    $tip_for_driver
- * @property int    $booking_detail_id
  * @property int    $created_at
  * @property int    $updated_at
+ * @property float  $booking_detail_id
+ * @property float  $total_charges
  */
 class Bookings extends Model
 {
@@ -38,7 +39,7 @@ class Bookings extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'contact_name', 'contact_phone', 'mobile_number', 'email', 'tip_for_driver', 'booking_detail_id', 'created_at', 'updated_at'
+        'first_name', 'last_name', 'contact_name', 'contact_phone', 'mobile_number', 'email', 'tip_for_driver', 'booking_detail_id', 'created_at', 'updated_at', 'total_charges'
     ];
 
     /**
@@ -56,7 +57,7 @@ class Bookings extends Model
      * @var array
      */
     protected $casts = [
-        'first_name' => 'string', 'last_name' => 'string', 'contact_name' => 'string', 'contact_phone' => 'string', 'mobile_number' => 'string', 'email' => 'string', 'tip_for_driver' => 'int', 'booking_detail_id' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
+        'first_name' => 'string', 'last_name' => 'string', 'contact_name' => 'string', 'contact_phone' => 'string', 'mobile_number' => 'string', 'email' => 'string', 'tip_for_driver' => 'int', 'booking_detail_id' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'total_charges' => 'double'
     ];
 
     /**

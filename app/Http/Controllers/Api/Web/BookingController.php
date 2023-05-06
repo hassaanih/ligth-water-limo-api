@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Api\Web;
 
+use App\Enums\LocationTypes;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\BookingDetails;
+use App\Models\BookingLocation;
 use App\Models\Bookings;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Throwable;
 
 class BookingController extends BaseController
 {
@@ -47,18 +51,35 @@ class BookingController extends BaseController
             $response['error'] = $validator->errors();
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
-        foreach ($reqParams['booking_stops'] as $stop) {
-            
-            
-        }
-        return;
-        // dd($reqParams);
-        if($reqParams['booking_stops']){
+        try{
+
+        }catch(Throwable $e){
+            Log::error($e->getMessage());
 
         }
-
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
+        
+        if(array_key_exists('stops', $reqParams)){
+            foreach ($reqParams['stops'] as $stop) {
+                $booking_location = new BookingLocation();
+                $booking_location->location_type_id = LocationTypes::STOP;
+                $booking_location->location = $stop['location'];
+                $booking_location->booking_id = $booking_details->id;
+                $booking_location->save();
+            }
+        }
+
+        if(isset($reqParams['baby_chair'])){
+            $booking_details->baby_chair = intval($reqParams['baby_chair']);
+        }
+
+        if(isset($reqParams['onsight_meetup'])){
+            $booking_details->onsight_meetup = intval($reqParams['onsight_meetup']);
+        }
+
+        $booking_details->total_stops = count($reqParams['stops']);
+        $booking_details->update();
         $response['booking_details_id'] = $booking_details->id;
         return $this->sendResponse($response, Response::HTTP_OK);
 
@@ -80,7 +101,6 @@ class BookingController extends BaseController
             'contact_phone' => 'required',
             'mobile_number' => 'required',
             'email' => 'required',
-            'tip_for_driver' => 'required',
             'booking_detail_id' => 'required'
         ]);
 
