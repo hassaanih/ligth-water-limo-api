@@ -73,10 +73,12 @@ class BookingController extends BaseController
 
         if(isset($reqParams['baby_chair'])){
             $booking_details->baby_chair = intval($reqParams['baby_chair']);
+            $booking_details->total_charges += 30.00;
         }
 
         if(isset($reqParams['onsight_meetup'])){
             $booking_details->onsight_meetup = intval($reqParams['onsight_meetup']);
+            $booking_details->total_charges += 40.00;
         }
         $booking_details->update();
         $response['booking_details'] = $booking_details;
