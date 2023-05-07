@@ -60,7 +60,7 @@ class BookingController extends BaseController
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
         
-        if(array_key_exists('stops', $reqParams)){
+        if(isset($reqParams['stops'])){
             foreach ($reqParams['stops'] as $stop) {
                 $booking_location = new BookingLocation();
                 $booking_location->location_type_id = LocationTypes::STOP;
@@ -68,6 +68,7 @@ class BookingController extends BaseController
                 $booking_location->booking_id = $booking_details->id;
                 $booking_location->save();
             }
+            $booking_details->total_stops = count($reqParams['stops']);
         }
 
         if(isset($reqParams['baby_chair'])){
@@ -77,10 +78,8 @@ class BookingController extends BaseController
         if(isset($reqParams['onsight_meetup'])){
             $booking_details->onsight_meetup = intval($reqParams['onsight_meetup']);
         }
-
-        $booking_details->total_stops = count($reqParams['stops']);
         $booking_details->update();
-        $response['booking_details_id'] = $booking_details->id;
+        $response['booking_details'] = $booking_details;
         return $this->sendResponse($response, Response::HTTP_OK);
 
     }
