@@ -18,6 +18,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int    $onsight_meetup
  * @property string $pickup_location
  * @property string $drop_location
+ * @property string $flight_num
+ * @property string $airline_name
  * @property float  $total_km
  * @property float  $total_charges
  */
@@ -43,7 +45,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $fillable = [
-        'pickup_date', 'pickup_time', 'total_stops', 'pickup_location', 'drop_location', 'travellers', 'kids', 'bags', 'total_km', 'created_at', 'updated_at', 'vehicle_type_id', 'vehicle_id', 'baby_chair', 'onsight_meetup', 'total_charges'
+        'pickup_date', 'pickup_time', 'total_stops', 'pickup_location', 'drop_location', 'travellers', 'kids', 'bags', 'total_km', 'created_at', 'updated_at', 'vehicle_type_id', 'vehicle_id', 'baby_chair', 'onsight_meetup', 'total_charges', 'flight_num', 'airline_name', 'arrival_time'
     ];
 
     /**
@@ -61,7 +63,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $casts = [
-        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int', 'baby_chair' => 'int', 'onsight_meetup' => 'int', 'total_charges' => 'double'
+        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int', 'baby_chair' => 'int', 'onsight_meetup' => 'int', 'total_charges' => 'double', 'flight_num' => 'string', 'airline_name' => 'string'
     ];
 
     /**
