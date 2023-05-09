@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Web;
 
 use App\Enums\LocationTypes;
+use App\Helpers\PriceCalculatorHelper;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\BookingDetails;
 use App\Models\BookingLocation;
@@ -144,6 +145,7 @@ class BookingController extends BaseController
         $booking_details = BookingDetails::where('id',$reqParams['id'])->with('vehicleType')->with('vehicle')->first();
         $booking_details->vehicle_id = isset($reqParams['vehicle_id']) ? $reqParams['vehicle_id'] : 0;
         $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
+        $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->distance, $booking_details->vehicle_type_id);
         $booking_details->update();
         $response['booking_details'] = $booking_details;
         return $this->sendResponse($response, Response::HTTP_OK);
