@@ -21,8 +21,8 @@ class LookupLocationTypesTableSeeder extends Seeder
         LookupLocationTypes::truncate();
 
         $locationTypes = array(
-            ['id' => 1, 'name' => 'Sedan' ],
-            ['id' => 2, 'name' => 'SUV' ],
+            ['id' => 1, 'name' => 'airport' ],
+            ['id' => 2, 'name' => 'stop' ],
             ['id' => 3, 'name' => 'Custom' ]
         );
 
