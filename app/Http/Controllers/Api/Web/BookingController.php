@@ -142,8 +142,8 @@ class BookingController extends BaseController
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
 
-        $booking_details = BookingDetails::where('id',$reqParams['id'])->with('vehicleType')->with('vehicle')->first();
-        $booking_details->vehicle_id = isset($reqParams['vehicle_id']) ? $reqParams['vehicle_id'] : 0;
+        $booking_details = BookingDetails::where('id',$reqParams['id'])->first();
+        // $booking_details->vehicle_id = isset($reqParams['vehicle_id']) ? $reqParams['vehicle_id'] : 0;
         $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
         $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->distance, $booking_details->vehicle_type_id);
         $booking_details->update();

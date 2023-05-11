@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Web;
 
+use App\Helpers\StripeHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Validator;
 use Throwable;
 use Stripe\Stripe;
 use Stripe\Charge;
+use Stripe\Customer;
 
 class TodoController extends BaseController
 {
@@ -54,11 +56,17 @@ class TodoController extends BaseController
 
     public function testStripe(Request $request){
         try {
-            $charge = Charge::create([
-                'amount' => $request->amount,
-                'currency' => 'usd',
-                'source' => $request->stripeToken,
-            ]);
+            dd(StripeHelper::initPaymentIntent());
+            // $customer = Customer::create([
+            //     'email' => $request->input('email'),
+            //     'source' => $request->input('stripeToken')
+            // ]);
+        
+            // $charge = Charge::create([
+            //     'customer' => $customer->id,
+            //     'amount' => $request->input('amount'),
+            //     'currency' => 'usd'
+            // ]);
             return response()->json(['success' => true, 'message' => 'Payment successful']);
         } catch (Exception $e) {
             return response()->json(['success' => false, 'message' => 'Payment failed: ' . $e->getMessage()]);

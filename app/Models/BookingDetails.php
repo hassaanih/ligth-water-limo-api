@@ -87,4 +87,12 @@ class BookingDetails extends Model
     // Functions ...
 
     // Relations ...
+
+    public function vehicle(){
+        return $this->hasOne(LookupVehicles::class, 'id', 'vehicle_id');
+    }
+
+    public function vehicleType(){
+        return $this->hasOne(VehicleTypes::class, 'id', 'vehicle_type_id');
+    }
 }

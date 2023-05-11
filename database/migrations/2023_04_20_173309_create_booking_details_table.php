@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('pickup_date')->nullable(false);
             $table->time('pickup_time')->nullable(false);
-            $table->integer('total_stops')->nullable(false);
+            $table->integer('total_stops')->nullable(false)->default(0);
             $table->string('pickup_location')->nullable(false);
             $table->string('drop_location')->nullable(false);
             $table->integer('travellers')->nullable(false)->default(0);
