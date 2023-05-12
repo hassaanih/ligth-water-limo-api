@@ -56,7 +56,7 @@ class TodoController extends BaseController
 
     public function testStripe(Request $request){
         try {
-            dd(StripeHelper::initPaymentIntent());
+            dd(StripeHelper::createCustomerCheckout(100, 'abc', 'def', 1));
             // $customer = Customer::create([
             //     'email' => $request->input('email'),
             //     'source' => $request->input('stripeToken')

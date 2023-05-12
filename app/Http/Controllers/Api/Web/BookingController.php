@@ -134,7 +134,6 @@ class BookingController extends BaseController
 
         $validator = Validator::make($reqParams, [
             'id' => 'required',
-            'vehicle_type_id' => 'required'
         ]);
 
         if ($validator->fails()) {
@@ -143,11 +142,11 @@ class BookingController extends BaseController
         }
 
         $booking_details = BookingDetails::where('id',$reqParams['id'])->first();
-        // $booking_details->vehicle_id = isset($reqParams['vehicle_id']) ? $reqParams['vehicle_id'] : 0;
+        $booking_details->vehicle_id =  $reqParams['vehicle_id'];
         $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
-        $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->distance, $booking_details->vehicle_type_id);
+        $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
         $booking_details->update();
-        $response['booking_details'] = $booking_details;
+        $response['booking_details'] = BookingDetails::where('id',$reqParams['id'])->with('vehicleType')->with('vehicle')->first();
         return $this->sendResponse($response, Response::HTTP_OK);
     }
 
