@@ -160,7 +160,11 @@ class BookingController extends BaseController
         $booking_details = BookingDetails::where('id',$reqParams['id'])->first();
         $booking_details->vehicle_id =  $reqParams['vehicle_id'];
         $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
-        $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+        if(array_key_exists('total_duration_hours', $reqParams)){
+            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
+        }else{
+            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+        }
         $booking_details->update();
         $response['booking_details'] = BookingDetails::where('id',$reqParams['id'])->with('vehicleType')->with('vehicle')->first();
         return $this->sendResponse($response, Response::HTTP_OK);

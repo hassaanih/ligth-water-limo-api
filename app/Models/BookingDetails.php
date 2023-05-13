@@ -15,9 +15,11 @@ use Illuminate\Database\Eloquent\Model;
  * @property int    $vehicle_type_id
  * @property int    $vehicle_id
  * @property int    $baby_chair
- * @property string    $onsight_meetup
+ * @property int    $total_duration_hours
+ * @property int    $total_duration_minutes
  * @property string $pickup_location
  * @property string $drop_location
+ * @property string $onsight_meetup
  * @property string $flight_num
  * @property string $airline_name
  * @property float  $total_km
@@ -45,7 +47,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $fillable = [
-        'pickup_date', 'pickup_time', 'total_stops', 'pickup_location', 'drop_location', 'travellers', 'kids', 'bags', 'total_km', 'created_at', 'updated_at', 'vehicle_type_id', 'vehicle_id', 'baby_chair', 'onsight_meetup', 'total_charges', 'flight_num', 'airline_name', 'arrival_time'
+        'pickup_date', 'pickup_time', 'total_stops', 'pickup_location', 'drop_location', 'travellers', 'kids', 'bags', 'total_km', 'created_at', 'updated_at', 'vehicle_type_id', 'vehicle_id', 'baby_chair', 'onsight_meetup', 'total_charges', 'flight_num', 'airline_name', 'arrival_time', 'total_duration_hours', 'total_duration_minutes'
     ];
 
     /**
@@ -63,7 +65,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $casts = [
-        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int', 'baby_chair' => 'int', 'onsight_meetup' => 'string', 'total_charges' => 'double', 'flight_num' => 'string', 'airline_name' => 'string'
+        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int', 'baby_chair' => 'int', 'onsight_meetup' => 'string', 'total_charges' => 'double', 'flight_num' => 'string', 'airline_name' => 'string', 'total_duration_hours' => 'int', 'total_duration_minutes' => 'int'
     ];
 
     /**
@@ -87,7 +89,6 @@ class BookingDetails extends Model
     // Functions ...
 
     // Relations ...
-
     public function vehicle(){
         return $this->hasOne(LookupVehicles::class, 'id', 'vehicle_id');
     }
