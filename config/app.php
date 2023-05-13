@@ -182,7 +182,7 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\SmsServiceProvider::class,
-        Stripe\StripeServiceProvider::class,
+        // Stripe\StripeServiceProvider::class,
         /*
          * Package Service Providers...
          */
