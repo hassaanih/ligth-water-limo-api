@@ -10,7 +10,7 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "stripe/stripe-php": "^10.12",
+        "stripe/stripe-php": "^10.13",
         "twilio/sdk": "^6.44"
     },
     "require-dev": {

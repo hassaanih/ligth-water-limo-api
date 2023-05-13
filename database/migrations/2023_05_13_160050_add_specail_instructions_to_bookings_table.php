@@ -13,9 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('booking_details', function (Blueprint $table) {
-            $table->integer('baby_chair')->nullable(false)->default(0);
-            $table->string('onsight_meetup')->nullable(true);
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->text('specail_intruction')->nullable(true);
         });
     }
 
@@ -26,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('booking_details', function (Blueprint $table) {
-            $table->dropColumn('baby_chair', 'onsight_meetup');
+        Schema::table('bookings', function (Blueprint $table) {
+            $table->dropColumn('specail_intruction');
         });
     }
 };

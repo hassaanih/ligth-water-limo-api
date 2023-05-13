@@ -6,70 +6,45 @@ use App\Models\CancellationPolicies;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
+use Stripe\Charge;
+use Stripe\Stripe;
 use Throwable;
 
 class StripeHelper
 {
-    public static function initPaymentIntent($amount, $bookingDetailsId)
-    {
-        $amount = $amount; // amount in cents
-        $currency = 'usd'; // currency code
-        $description = 'order'.time().'-'.$bookingDetailsId; // payment intent description
-        $stripe_secret_key = env('STRIPE_SECRET'); // your Stripe secret key
+    public static function chargePayment($cardDetails, $amount){
+        try{
+            Stripe::setApiKey(env('STRIPE_SECRET'));
 
-        $ch = curl_init();
+            $token = \Stripe\Token::create([
+                'card' => [
+                  'number' => $cardDetails['card_number'],
+                  'exp_month' => $cardDetails['expiry_month'],
+                  'exp_year' => $cardDetails['expiry_year'],
+                  'cvc' => $cardDetails['cvv'],
+                ],
+              ]);
 
-        curl_setopt_array($ch, array(
-            CURLOPT_URL => 'https://api.stripe.com/v1/payment_intents',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => http_build_query(array(
-                'amount' => $amount,
-                'currency' => $currency,
-                'description' => $description,
-            )),
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer ' . $stripe_secret_key,
-            ),
-        ));
+              $charge = \Stripe\Charge::create([
+                'amount' => $amount * 100,
+                'currency' => 'usd',
+                'description' => 'Charge for booking',
+                'source' => $token->id,
+              ]);
 
-        $response = curl_exec($ch);
-        curl_close($ch);
+              $charge = Charge::retrieve($charge->id);
 
-        $payment_intent = json_decode($response);
-        return $payment_intent;
-    }
+              $status = $charge->status;
 
-    public static function createCustomerCheckout($amount, $successUrl, $failUrl, $bookingDetailsId){
-        
-        $stripe_secret_key = env('STRIPE_SECRET'); // your Stripe secret key
-
-        $params = array(
-            "payment_method_types[]" => "card",
-            "name" => "Booking".$bookingDetailsId,
-            "description" => 'order'.time().'-'.$bookingDetailsId,
-            "amount" => $amount,
-            "currency" => "usd",
-            "success_url" => "https://example.com/success",
-            "cancel_url" => "https://example.com/cancel"
-        );
-
-        $ch = curl_init();
-
-        curl_setopt_array($ch, array(
-            CURLOPT_URL => 'https://api.stripe.com/v1/checkout/sessions',
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => http_build_query($params),
-            CURLOPT_HTTPHEADER => array(
-                'Authorization: Bearer ' . $stripe_secret_key,
-            ),
-        ));
-
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-        $checkout = json_decode($response);
-        return $checkout;
+              if($status === 'succeeded'){
+                return true;
+              }else{
+                Log::error($charge);
+                return false;
+              }
+        }catch(Throwable $e){
+            Log::error('chargePayment'. $e->getMessage());
+            return false;
+        }
     }
 }

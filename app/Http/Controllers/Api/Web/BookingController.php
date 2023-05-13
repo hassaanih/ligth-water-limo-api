@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Web;
 
 use App\Enums\LocationTypes;
 use App\Helpers\PriceCalculatorHelper;
+use App\Helpers\StripeHelper;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\BookingDetails;
 use App\Models\BookingLocation;
@@ -12,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
+use Stripe\Stripe;
 use Throwable;
 
 class BookingController extends BaseController
@@ -78,7 +80,7 @@ class BookingController extends BaseController
         }
 
         if(isset($reqParams['onsight_meetup'])){
-            $booking_details->onsight_meetup = intval($reqParams['onsight_meetup']);
+            $booking_details->onsight_meetup = $reqParams['onsight_meetup'];
             $booking_details->flight_num = $reqParams['flight_num'];
             $booking_details->airline_name = $reqParams['airline_name'];
             $booking_details->arrival_time = $reqParams['arrival_time'];
@@ -98,7 +100,7 @@ class BookingController extends BaseController
     public function createBooking(Request $request)
     {
         $reqParams = $request->all();
-
+        // dd($reqParams);
         $validator = Validator::make($reqParams, [
             'first_name' => 'required',
             'last_name' => 'required',
@@ -114,10 +116,24 @@ class BookingController extends BaseController
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
 
-        $booking = new Bookings($reqParams);
-        $booking->save();
-        $response['booking'] = $booking;
-        return $this->sendResponse($response, Response::HTTP_OK);
+        $booking_details = BookingDetails::find($reqParams['booking_detail_id']);
+        $reqParams['total_charges'] = $booking_details->total_charges + (array_key_exists('tip_for_driver',$reqParams) ? $reqParams['tip_for_driver'] : 0);
+
+        if(!array_key_exists('card_details', $reqParams)){
+            $response['general'] = ['Please enter card details'];
+            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], $reqParams['total_charges']);
+        if($paymentResponse){
+            $booking = new Bookings($reqParams);
+            $booking->save();
+            $response['booking'] = $booking;
+            return $this->sendResponse($response, Response::HTTP_OK);
+        }
+
+        $response['general'] = ['payment failed'];
+        return $this->sendError($response, Response::HTTP_BAD_GATEWAY);
 
     }
 

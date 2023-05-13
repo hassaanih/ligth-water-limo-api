@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int    $vehicle_type_id
  * @property int    $vehicle_id
  * @property int    $baby_chair
- * @property int    $onsight_meetup
+ * @property string    $onsight_meetup
  * @property string $pickup_location
  * @property string $drop_location
  * @property string $flight_num
@@ -63,7 +63,7 @@ class BookingDetails extends Model
      * @var array
      */
     protected $casts = [
-        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int', 'baby_chair' => 'int', 'onsight_meetup' => 'int', 'total_charges' => 'double', 'flight_num' => 'string', 'airline_name' => 'string'
+        'pickup_date' => 'date', 'total_stops' => 'int', 'pickup_location' => 'string', 'drop_location' => 'string', 'travellers' => 'int', 'kids' => 'int', 'bags' => 'int', 'total_km' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'vehicle_type_id' => 'int', 'vehicle_id' => 'int', 'baby_chair' => 'int', 'onsight_meetup' => 'string', 'total_charges' => 'double', 'flight_num' => 'string', 'airline_name' => 'string'
     ];
 
     /**

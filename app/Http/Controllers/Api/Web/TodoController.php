@@ -56,11 +56,29 @@ class TodoController extends BaseController
 
     public function testStripe(Request $request){
         try {
-            dd(StripeHelper::createCustomerCheckout(100, 'abc', 'def', 1));
-            // $customer = Customer::create([
-            //     'email' => $request->input('email'),
-            //     'source' => $request->input('stripeToken')
-            // ]);
+            // dd(StripeHelper::createCustomerCheckout(100, 'abc', 'def', 1));
+            Stripe::setApiKey(env('STRIPE_SECRET'));
+
+            $token = \Stripe\Token::create([
+                'card' => [
+                  'number' => '4242424242424242',
+                  'exp_month' => 12,
+                  'exp_year' => 2025,
+                  'cvc' => '314',
+                ],
+              ]);
+
+              $charge = \Stripe\Charge::create([
+                'amount' => 2000,
+                'currency' => 'usd',
+                'description' => 'Charge for booking',
+                'source' => $token->id,
+              ]);
+
+              $charge = Charge::retrieve($charge->id);
+
+              $status = $charge->status;
+              dd($status);
         
             // $charge = Charge::create([
             //     'customer' => $customer->id,
