@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Stripe;
 use Throwable;
+use Yajra\DataTables\Facades\DataTables;
 
 class BookingController extends BaseController
 {
@@ -171,47 +172,33 @@ class BookingController extends BaseController
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
+     * list Banquet.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function findAll(Request $request)
     {
-        //
-    }
+        $page = 1;
+        $page_size = 10;
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        $sort_by = 'created_at';
+        $select = '*';
+
+        $sort_order = 'desc';
+        $filters = null;
+        $response = array_filter($request->all());
+        extract(array_filter($request->all()));
+
+        // build query
+        $query = Bookings::with('details')->orderBy($sort_by, $sort_order);
+
+        if ($page_size == -1) {
+            $response['data'] = $query->select($select)->get();
+            return response()->json($response, Response::HTTP_OK);
+        }
+
+        return $query->paginate($page_size, $select,$page);
+
     }
 }

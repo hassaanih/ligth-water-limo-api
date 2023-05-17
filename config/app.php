@@ -183,6 +183,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\SmsServiceProvider::class,
         // Stripe\StripeServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
         /*
          * Package Service Providers...
          */
