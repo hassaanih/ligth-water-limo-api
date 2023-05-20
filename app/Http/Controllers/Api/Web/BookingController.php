@@ -124,7 +124,7 @@ class BookingController extends BaseController
             $response['general'] = ['Please enter card details'];
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
-
+        Log::debug($reqParams['total_charges']);
         $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], $reqParams['total_charges']);
         if ($paymentResponse) {
             $booking = new Bookings($reqParams);
