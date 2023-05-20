@@ -125,7 +125,7 @@ class BookingController extends BaseController
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
         Log::debug($reqParams['total_charges']);
-        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], $reqParams['total_charges']);
+        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], intval($reqParams['total_charges']));
         if ($paymentResponse) {
             $booking = new Bookings($reqParams);
             $booking->save();
@@ -160,8 +160,8 @@ class BookingController extends BaseController
         $booking_details = BookingDetails::where('id', $reqParams['id'])->first();
         $booking_details->vehicle_id =  $reqParams['vehicle_id'];
         $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
-        if (array_key_exists('vehicle_id', $reqParams)) {
-            $booking_details->total_charges = 20;
+        Log::debug($reqParams['vehicle_id']);
+        if (array_key_exists('vehicle_id', $reqParams) && $reqParams['vehicle_id'] != 0) {
             $vehicle = LookupVehicles::where('id', $reqParams['vehicle_id'])->first();
             if (!$vehicle) {
                 $response['error'] = ['Invalid Vehicle Id'];
@@ -169,18 +169,19 @@ class BookingController extends BaseController
             }
             $booking_details->vehicle_type_id = $vehicle->vehicle_type_id;
             if (array_key_exists('total_duration_hours', $reqParams)) {
-                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
+                $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
             } else {
-                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+                $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
             }
+            $booking_details->total_charges += 20;
             $booking_details->update();
             $response['booking_details'] = BookingDetails::where('id', $reqParams['id'])->with('vehicleType')->with('vehicle')->first();
             return $this->sendResponse($response, Response::HTTP_OK);
         }
         if (array_key_exists('total_duration_hours', $reqParams)) {
-            $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
+            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
         } else {
-            $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
         }
 
         $booking_details->update();
