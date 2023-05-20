@@ -73,6 +73,11 @@ class BookingController extends BaseController
             $booking_details->total_stops = count($reqParams['stops']);
         }
 
+        if($reqParams['total_duration_hours'] != 0 && $reqParams['total_duration_minutes'] != 0){
+            $booking_details->total_duration_hours = $reqParams['total_duration_hours'];
+            $booking_details->total_duration_minutes = $reqParams['total_duration_minutes'];
+        }
+
         if ($reqParams['baby_chair'] != 0) {
             $booking_details->baby_chair = intval($reqParams['baby_chair']);
             $booking_details->total_charges += 30.00;
