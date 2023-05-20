@@ -40,3 +40,4 @@ Route::get('vehicles/find/all', 'App\Http\Controllers\Api\Web\LookupVehiclesCont
 Route::get('testapi', 'App\Http\Controllers\Api\Web\BookingController@test');
 Route::get('test', 'App\Http\Controllers\Api\Web\TodoController@testStripe');
 Route::get('bookings/findAll', 'App\Http\Controllers\Api\Web\BookingController@findAll');
+Route::post('bookings/assign/driver', 'App\Http\Controllers\Api\Web\BookingController@assignDriver');

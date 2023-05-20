@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\BaseController;
 use App\Models\BookingDetails;
 use App\Models\BookingLocation;
 use App\Models\Bookings;
+use App\Models\LookupVehicles;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -28,7 +29,6 @@ class BookingController extends BaseController
     {
         printf('hello');
         return $this->sendResponse('done', Response::HTTP_OK);
- 
     }
 
     /**
@@ -55,16 +55,14 @@ class BookingController extends BaseController
             $response['error'] = $validator->errors();
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
-        try{
-
-        }catch(Throwable $e){
+        try {
+        } catch (Throwable $e) {
             Log::error($e->getMessage());
-
         }
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
-        
-        if(isset($reqParams['stops'])){
+
+        if (isset($reqParams['stops'])) {
             foreach ($reqParams['stops'] as $stop) {
                 $booking_location = new BookingLocation();
                 $booking_location->location_type_id = LocationTypes::STOP;
@@ -75,22 +73,24 @@ class BookingController extends BaseController
             $booking_details->total_stops = count($reqParams['stops']);
         }
 
-        if(isset($reqParams['baby_chair'])){
+        if ($reqParams['baby_chair'] != 0) {
             $booking_details->baby_chair = intval($reqParams['baby_chair']);
             $booking_details->total_charges += 30.00;
         }
 
-        if(isset($reqParams['onsight_meetup'])){
+        if (isset($reqParams['onsight_meetup'])) {
             $booking_details->onsight_meetup = $reqParams['onsight_meetup'];
             $booking_details->flight_num = $reqParams['flight_num'];
+            $booking_details->total_charges += 5;
             $booking_details->airline_name = $reqParams['airline_name'];
             $booking_details->arrival_time = $reqParams['arrival_time'];
-            $booking_details->total_charges += 40.00;
+            $booking_details->total_charges += 40.00 ;
         }
+
+        
         $booking_details->update();
         $response['booking_details'] = $booking_details;
         return $this->sendResponse($response, Response::HTTP_OK);
-
     }
 
     /**
@@ -118,15 +118,15 @@ class BookingController extends BaseController
         }
 
         $booking_details = BookingDetails::find($reqParams['booking_detail_id']);
-        $reqParams['total_charges'] = $booking_details->total_charges + (array_key_exists('tip_for_driver',$reqParams) ? $reqParams['tip_for_driver'] : 0);
+        $reqParams['total_charges'] = $booking_details->total_charges + (array_key_exists('tip_for_driver', $reqParams) ? $reqParams['tip_for_driver'] : 0);
 
-        if(!array_key_exists('card_details', $reqParams)){
+        if (!array_key_exists('card_details', $reqParams)) {
             $response['general'] = ['Please enter card details'];
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
 
         $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], $reqParams['total_charges']);
-        if($paymentResponse){
+        if ($paymentResponse) {
             $booking = new Bookings($reqParams);
             $booking->save();
             $response['booking'] = $booking;
@@ -135,7 +135,6 @@ class BookingController extends BaseController
 
         $response['general'] = ['payment failed'];
         return $this->sendError($response, Response::HTTP_BAD_GATEWAY);
-
     }
 
     /**
@@ -158,16 +157,34 @@ class BookingController extends BaseController
             return $this->sendError($response, Response::HTTP_BAD_REQUEST);
         }
 
-        $booking_details = BookingDetails::where('id',$reqParams['id'])->first();
+        $booking_details = BookingDetails::where('id', $reqParams['id'])->first();
         $booking_details->vehicle_id =  $reqParams['vehicle_id'];
         $booking_details->vehicle_type_id = $reqParams['vehicle_type_id'];
-        if(array_key_exists('total_duration_hours', $reqParams)){
-            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
-        }else{
-            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+        if (array_key_exists('vehicle_id', $reqParams)) {
+            $booking_details->total_charges = 20;
+            $vehicle = LookupVehicles::where('id', $reqParams['vehicle_id'])->first();
+            if (!$vehicle) {
+                $response['error'] = ['Invalid Vehicle Id'];
+                return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            }
+            $booking_details->vehicle_type_id = $vehicle->vehicle_type_id;
+            if (array_key_exists('total_duration_hours', $reqParams)) {
+                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
+            } else {
+                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+            }
+            $booking_details->update();
+            $response['booking_details'] = BookingDetails::where('id', $reqParams['id'])->with('vehicleType')->with('vehicle')->first();
+            return $this->sendResponse($response, Response::HTTP_OK);
         }
+        if (array_key_exists('total_duration_hours', $reqParams)) {
+            $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true);
+        } else {
+            $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id);
+        }
+
         $booking_details->update();
-        $response['booking_details'] = BookingDetails::where('id',$reqParams['id'])->with('vehicleType')->with('vehicle')->first();
+        $response['booking_details'] = BookingDetails::where('id', $reqParams['id'])->with('vehicleType')->with('vehicle')->first();
         return $this->sendResponse($response, Response::HTTP_OK);
     }
 
@@ -198,7 +215,36 @@ class BookingController extends BaseController
             return response()->json($response, Response::HTTP_OK);
         }
 
-        return $query->paginate($page_size, $select,$page);
+        return $query->paginate($page_size, $select, $page);
+    }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function assignDriver(Request $request)
+    {
+        $reqParams = $request->all();
+        $response = [];
+
+        $validator = Validator::make($reqParams, [
+            'id' => 'required',
+            'driver_name' => 'required',
+            'driver_payment' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response['error'] = $validator->errors();
+            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $bookings = Bookings::where('id', $reqParams['id'])->first();
+        $bookings->diver_name =  $reqParams['driver_name'];
+        $bookings->driver_payment = $reqParams['driver_payment'];
+        $bookings->update();
+        $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
+        return $this->sendResponse($response, Response::HTTP_OK);
     }
 }

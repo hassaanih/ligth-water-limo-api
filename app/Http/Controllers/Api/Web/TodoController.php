@@ -6,6 +6,7 @@ use App\Helpers\StripeHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
@@ -57,27 +58,17 @@ class TodoController extends BaseController
     public function testStripe(Request $request){
         try {
             // dd(StripeHelper::createCustomerCheckout(100, 'abc', 'def', 1));
-            Stripe::setApiKey(env('STRIPE_SECRET'));
+            $cardDetails = [
+                'card_number' => '4242424242424242',
+                'expiry_month' => 12,
+                'expiry_year' => 2023,
+                'cvv' => '123',
+            ];
+            
 
-            $token = \Stripe\Token::create([
-                'card' => [
-                  'number' => '4242424242424242',
-                  'exp_month' => 12,
-                  'exp_year' => 2025,
-                  'cvc' => '314',
-                ],
-              ]);
+              $charge = StripeHelper::chargePayment($cardDetails, 1000);
 
-              $charge = \Stripe\Charge::create([
-                'amount' => 2000,
-                'currency' => 'usd',
-                'description' => 'Charge for booking',
-                'source' => $token->id,
-              ]);
-
-              $charge = Charge::retrieve($charge->id);
-
-              $status = $charge->status;
+              $status = $charge;
               dd($status);
         
             // $charge = Charge::create([
