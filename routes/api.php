@@ -39,5 +39,6 @@ Route::post('booking/vehicle/select', 'App\Http\Controllers\Api\Web\BookingContr
 Route::get('vehicles/find/all', 'App\Http\Controllers\Api\Web\LookupVehiclesController@findAll');
 Route::get('testapi', 'App\Http\Controllers\Api\Web\BookingController@test');
 Route::get('test', 'App\Http\Controllers\Api\Web\TodoController@testStripe');
+Route::get('test/email', 'App\Http\Controllers\Api\Web\TodoController@testEmail');
 Route::get('bookings/findAll', 'App\Http\Controllers\Api\Web\BookingController@findAll');
 Route::post('bookings/assign/driver', 'App\Http\Controllers\Api\Web\BookingController@assignDriver');

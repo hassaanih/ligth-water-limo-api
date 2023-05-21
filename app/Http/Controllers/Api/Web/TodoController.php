@@ -5,15 +5,19 @@ namespace App\Http\Controllers\Api\Web;
 use App\Helpers\StripeHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Mail\TestMail;
 use App\Models\User;
 use Exception;
+use Illuminate\Contracts\Mail\Mailer as MailMailer;
 use Illuminate\Http\Response;
+use Illuminate\Mail\Mailer;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Throwable;
 use Stripe\Stripe;
 use Stripe\Charge;
 use Stripe\Customer;
+
 
 class TodoController extends BaseController
 {
@@ -79,6 +83,14 @@ class TodoController extends BaseController
             return response()->json(['success' => true, 'message' => 'Payment successful']);
         } catch (Exception $e) {
             return response()->json(['success' => false, 'message' => 'Payment failed: ' . $e->getMessage()]);
+        }
+    }
+
+    public function testEmail(Request $request, MailMailer $mail){
+        try{
+            $mail->to('hassaanih1997@gmail.com')->send(new TestMail());
+        }catch(Throwable $e){
+            Log::error($e->getMessage());
         }
     }
 }
