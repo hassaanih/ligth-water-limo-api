@@ -256,4 +256,29 @@ class BookingController extends BaseController
         $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
         return $this->sendResponse($response, Response::HTTP_OK);
     }
+
+    public function find(Request $request){
+        $reqParams = $request->all();
+        $page = 1;
+        $page_size = 10;
+
+        $sort_by = 'created_at';
+        $select = '*';
+
+        $sort_order = 'desc';
+        $filters = null;
+        $response = array_filter($request->all());
+        extract(array_filter($request->all()));
+
+        // build query
+        $query = Bookings::with('details')->where('email', $reqParams['email'])->orderBy($sort_by, $sort_order);
+
+        if ($page_size == -1) {
+            $response['data'] = $query->select($select)->get();
+            return response()->json($response, Response::HTTP_OK);
+        }
+
+        return $query->paginate($page_size, $select, $page);
+
+    }
 }
