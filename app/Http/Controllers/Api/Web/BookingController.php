@@ -6,10 +6,12 @@ use App\Enums\LocationTypes;
 use App\Helpers\PriceCalculatorHelper;
 use App\Helpers\StripeHelper;
 use App\Http\Controllers\Api\BaseController;
+use App\Mail\TestMail;
 use App\Models\BookingDetails;
 use App\Models\BookingLocation;
 use App\Models\Bookings;
 use App\Models\LookupVehicles;
+use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
@@ -103,7 +105,7 @@ class BookingController extends BaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function createBooking(Request $request)
+    public function createBooking(Request $request, Mailer $mail)
     {
         $reqParams = $request->all();
         // dd($reqParams);
@@ -135,6 +137,7 @@ class BookingController extends BaseController
             $booking = new Bookings($reqParams);
             $booking->save();
             $response['booking'] = $booking;
+            $mail->to($reqParams['email'])->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
             return $this->sendResponse($response, Response::HTTP_OK);
         }
 

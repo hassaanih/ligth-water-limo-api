@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\BookingDetails;
+use App\Models\Bookings;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,12 +18,17 @@ class TestMail extends Mailable
 
     /**
      * Create a new message instance.
-     *
+     * 
      * @return void
      */
-    public function __construct()
+    public $booking;
+    public $booking_detail;
+    public $card_number;
+    public function __construct(Bookings $booking, BookingDetails $booking_detail, $card_number)
     {
-        //
+        $this->booking = $booking;
+        $this->booking_detail = $booking_detail;
+        $this->card_number = $card_number;
     }
 
     /**
@@ -67,6 +74,9 @@ class TestMail extends Mailable
     public function build(Mailer $mailer)
     {
         return $this->from('hassaanih1997@gmail.com')
-                    ->view('emails.test');
+                    ->view('emails.test')
+                    ->with('booking', $this->booking)
+                    ->with('booking_details', $this->booking_detail)
+                    ->with('card_number', $this->card_number);
     }
 }

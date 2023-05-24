@@ -121,7 +121,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:270px">
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td class="es-m-txt-c" align="left" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:19px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333"><strong>Total: $40.00</strong><br></h3></td>
+                      <td class="es-m-txt-c" align="left" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:19px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333"><strong>Total: {{$booking->total_charges}}</strong><br></h3></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -131,7 +131,7 @@ a[x-apple-data-detectors] {
                   <td align="left" style="padding:0;Margin:0;width:270px">
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                      <tr style="border-collapse:collapse">
-                      <td class="es-m-txt-c" align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Mon, February&nbsp;4, 2019&nbsp;</p></td>
+                      <td class="es-m-txt-c" align="right" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">{{ date('D, F j, Y', strtotime($booking->created_at)) }}</p></td>
                      </tr>
                    </table></td>
                  </tr>
@@ -208,13 +208,13 @@ a[x-apple-data-detectors] {
                       <td class="es-m-txt-l" align="left" style="padding:0;Margin:0;padding-bottom:15px"><h3 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333">Amount Charged</h3></td>
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">MasterCard **** 6789<br></p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Card Number **** {{$card_number}}<br></p></td>
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#333333;font-size:13px">Lorem ipsum dolor sit amet, consectetur.</p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#333333;font-size:13px"></p></td>
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" style="padding:0;Margin:0;padding-top:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong><a target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:14px" href="">Download PDF</a></strong></p></td>
+                      <!-- <td align="left" style="padding:0;Margin:0;padding-top:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong><a target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:14px" href="">Download PDF</a></strong></p></td> -->
                      </tr>
                    </table></td>
                  </tr>
@@ -228,7 +228,7 @@ a[x-apple-data-detectors] {
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="0" cellpadding="0" border="0" role="presentation">
                          <tr style="border-collapse:collapse">
                           <td width="50%" align="left" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333">Trip Fare</h3></td>
-                          <td align="right" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333">$50.00</h3></td>
+                          <td align="right" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333">${{$booking->total_charges}}</h3></td>
                          </tr>
                          <tr style="border-collapse:collapse">
                           <td width="50%" align="left" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><br></h3></td>
@@ -249,7 +249,7 @@ a[x-apple-data-detectors] {
                        <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="0" cellpadding="0" border="0" role="presentation">
                          <tr style="border-collapse:collapse">
                           <td width="50%" align="left" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><strong>Total</strong></h3></td>
-                          <td align="right" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><strong>$52.00</strong></h3></td>
+                          <td align="right" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><strong>${{$booking->total_charges}}</strong></h3></td>
                          </tr>
                        </table></td>
                      </tr>
@@ -302,7 +302,7 @@ a[x-apple-data-detectors] {
                       <td align="left" style="padding:0;Margin:0">
                        <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                          <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></td>
+                          <td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:15px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">{{$booking_detail->pickup_location}}</p></td>
                          </tr>
                        </table></td>
                      </tr>
@@ -319,7 +319,7 @@ a[x-apple-data-detectors] {
                           <td class="es-m-txt-l" align="left" style="padding:0;Margin:0"><h3 style="Margin:0;line-height:20px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#ffce00">Drop off Location</h3></td>
                          </tr>
                          <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></td>
+                          <td align="left" style="padding:0;Margin:0;padding-top:5px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">{{$booking_detail->drop_location}}</p></td>
                          </tr>
                        </table></td>
                      </tr>
@@ -337,7 +337,7 @@ a[x-apple-data-detectors] {
                        </table></td>
                      </tr>
                      <tr style="border-collapse:collapse">
-                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:32px;color:#ffffff;font-size:16px">Total Journey: 6.18 mi</p></td>
+                      <td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:32px;color:#ffffff;font-size:16px">Total Journey: ${{$booking_detail->total_km}} mi</p></td>
                      </tr>
                    </table></td>
                  </tr>
