@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $contact_phone
  * @property string $mobile_number
  * @property string $email
+ * @property string $specail_intruction
  * @property string $diver_name
  * @property int    $tip_for_driver
+ * @property int    $booking_detail_id
  * @property int    $created_at
  * @property int    $updated_at
- * @property float  $booking_detail_id
  * @property float  $total_charges
  * @property float  $driver_payment
- * @property string $specail_intruction
  */
 class Bookings extends Model
 {
@@ -42,7 +42,7 @@ class Bookings extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'contact_name', 'contact_phone', 'mobile_number', 'email', 'tip_for_driver', 'booking_detail_id', 'created_at', 'updated_at', 'total_charges', 'specail_intructions', 'diver_name', 'driver_payment'
+        'first_name', 'last_name', 'contact_name', 'contact_phone', 'mobile_number', 'email', 'tip_for_driver', 'booking_detail_id', 'created_at', 'updated_at', 'total_charges', 'specail_intruction', 'diver_name', 'driver_payment', 'status'
     ];
 
     /**
@@ -60,7 +60,7 @@ class Bookings extends Model
      * @var array
      */
     protected $casts = [
-        'first_name' => 'string', 'last_name' => 'string', 'contact_name' => 'string', 'contact_phone' => 'string', 'mobile_number' => 'string', 'email' => 'string', 'tip_for_driver' => 'int', 'booking_detail_id' => 'double', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'total_charges' => 'double', 'specail_intruction' => 'string', 'diver_name' => 'string', 'driver_payment' =>'double'
+        'first_name' => 'string', 'last_name' => 'string', 'contact_name' => 'string', 'contact_phone' => 'string', 'mobile_number' => 'string', 'email' => 'string', 'tip_for_driver' => 'int', 'booking_detail_id' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp', 'total_charges' => 'double', 'specail_intruction' => 'string', 'diver_name' => 'string', 'driver_payment' => 'double'
     ];
 
     /**

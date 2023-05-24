@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Web;
 
+use App\Enums\BookingStatus;
 use App\Enums\LocationTypes;
 use App\Helpers\PriceCalculatorHelper;
 use App\Helpers\StripeHelper;
@@ -11,6 +12,7 @@ use App\Models\BookingDetails;
 use App\Models\BookingLocation;
 use App\Models\Bookings;
 use App\Models\LookupVehicles;
+use DateTime;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -75,7 +77,7 @@ class BookingController extends BaseController
             $booking_details->total_stops = count($reqParams['stops']);
         }
 
-        if($reqParams['total_duration_hours'] != 0 && $reqParams['total_duration_minutes'] != 0){
+        if ($reqParams['total_duration_hours'] != 0 && $reqParams['total_duration_minutes'] != 0) {
             $booking_details->total_duration_hours = $reqParams['total_duration_hours'];
             $booking_details->total_duration_minutes = $reqParams['total_duration_minutes'];
         }
@@ -91,10 +93,10 @@ class BookingController extends BaseController
             $booking_details->total_charges += 5;
             $booking_details->airline_name = $reqParams['airline_name'];
             $booking_details->arrival_time = $reqParams['arrival_time'];
-            $booking_details->total_charges += 40.00 ;
+            $booking_details->total_charges += 40.00;
         }
 
-        
+
         $booking_details->update();
         $response['booking_details'] = $booking_details;
         return $this->sendResponse($response, Response::HTTP_OK);
@@ -217,7 +219,7 @@ class BookingController extends BaseController
         extract(array_filter($request->all()));
 
         // build query
-        $query = Bookings::with('details')->orderBy($sort_by, $sort_order);
+        $query = Bookings::with('details')->where('status', BookingStatus::ACTIVE)->orderBy($sort_by, $sort_order);
 
         if ($page_size == -1) {
             $response['data'] = $query->select($select)->get();
@@ -257,8 +259,78 @@ class BookingController extends BaseController
         return $this->sendResponse($response, Response::HTTP_OK);
     }
 
-    public function find(Request $request){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function assignSelf(Request $request)
+    {
         $reqParams = $request->all();
+        $response = [];
+
+        $validator = Validator::make($reqParams, [
+            'id' => 'required',
+            'driver_name' => 'required',
+            'driver_payment' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response['error'] = $validator->errors();
+            return $this->sendResponse($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $bookings = Bookings::where('id', $reqParams['id'])->first();
+        $bookings->diver_name =  $reqParams['driver_name'];
+        $bookings->driver_payment = $reqParams['driver_payment'];
+        $bookings->update();
+        $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
+        return $this->sendResponse($response, Response::HTTP_OK);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel(Request $request)
+    {
+        $reqParams = $request->all();
+        $response = [];
+
+        $validator = Validator::make($reqParams, [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response['error'] = $validator->errors();
+            return $this->sendResponse($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $bookings = Bookings::where('id', $reqParams['id'])->first();
+        $pickupTime = new DateTime($bookings->details->pickup_time);
+
+        // Calculate the time difference between pickup time and current time
+        $currentTime = new DateTime();
+        $timeDifference = $pickupTime->diff($currentTime)->h;
+
+        // Check if the time difference is less than or equal to 24 hours
+        if ($timeDifference <= 24) {
+            $response['error'] = ['Cannot cancel ride when 24 hours or less are left from pickup time'];
+            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $bookings->status = BookingStatus::INACTIVE;
+        $bookings->update();
+        $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
+        return $this->sendResponse($response, Response::HTTP_OK);
+    }
+
+    public function find(Request $request)
+    {
+
         $page = 1;
         $page_size = 10;
 
@@ -271,7 +343,7 @@ class BookingController extends BaseController
         extract(array_filter($request->all()));
 
         // build query
-        $query = Bookings::with('details')->where('email', $reqParams['email'])->orderBy($sort_by, $sort_order);
+        $query = Bookings::with('details')->where('email', $request->input('email'))->where('status', BookingStatus::ACTIVE)->orderBy($sort_by, $sort_order);
 
         if ($page_size == -1) {
             $response['data'] = $query->select($select)->get();
@@ -279,6 +351,5 @@ class BookingController extends BaseController
         }
 
         return $query->paginate($page_size, $select, $page);
-
     }
 }

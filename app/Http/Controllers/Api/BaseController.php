@@ -26,7 +26,6 @@ class BaseController extends Controller
      */
     public function sendError($responseData = [], $code = Response::HTTP_BAD_REQUEST)
     {
-        $response = [];
 
         if (!empty($responseData)) {
             $response['errors'] = $responseData;
