@@ -12,6 +12,7 @@ use App\Models\BookingDetails;
 use App\Models\BookingLocation;
 use App\Models\Bookings;
 use App\Models\LookupVehicles;
+use Carbon\Carbon;
 use DateTime;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
@@ -308,15 +309,14 @@ class BookingController extends BaseController
         }
 
         $bookings = Bookings::where('id', $reqParams['id'])->first();
-        $pickupTime = new DateTime($bookings->details->pickup_time);
+        $carbonDateTime = Carbon::parse($bookings->details->pickup_date. ' ' . $bookings->details->pickup_time);
 
         // Calculate the time difference between pickup time and current time
-        $currentTime = new DateTime();
-        $timeDifference = $pickupTime->diff($currentTime)->h;
-
+        $currentDateTime = Carbon::now();
         // Check if the time difference is less than or equal to 24 hours
-        if ($timeDifference <= 24) {
-            $response['error'] = ['Cannot cancel ride when 24 hours or less are left from pickup time'];
+        $hoursDifference = $carbonDateTime->diffInHours($currentDateTime);
+        if ($hoursDifference <= 4) {
+            $response['error'] = ['Cannot cancel ride when 4 hours or less are left from pickup time'];
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
