@@ -85,7 +85,7 @@ class BookingController extends BaseController
             $booking_details->total_charges += 30.00;
         }
 
-        if (isset($reqParams['onsight_meetup'])) {
+        if (array_key_exists('onsight_meetup',$reqParams)) {
             $booking_details->onsight_meetup = $reqParams['onsight_meetup'];
             $booking_details->flight_num = $reqParams['flight_num'];
             $booking_details->total_charges += 5;
