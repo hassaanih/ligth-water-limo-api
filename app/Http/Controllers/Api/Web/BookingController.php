@@ -57,12 +57,10 @@ class BookingController extends BaseController
 
         if ($validator->fails()) {
             $response['error'] = $validator->errors();
-            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            Log::debug($response);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
-        try {
-        } catch (Throwable $e) {
-            Log::error($e->getMessage());
-        }
+        
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
 
@@ -123,7 +121,7 @@ class BookingController extends BaseController
 
         if ($validator->fails()) {
             $response['error'] = $validator->errors();
-            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
         $booking_details = BookingDetails::find($reqParams['booking_detail_id']);
@@ -131,17 +129,17 @@ class BookingController extends BaseController
 
         if (!array_key_exists('card_details', $reqParams)) {
             $response['general'] = ['Please enter card details'];
-            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
         Log::debug($reqParams['total_charges']);
-        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], intval($reqParams['total_charges']));
-        if ($paymentResponse) {
+        // $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], intval($reqParams['total_charges']));
+        // if ($paymentResponse) {
             $booking = new Bookings($reqParams);
             $booking->save();
             $response['booking'] = $booking;
-            $mail->to($reqParams['email'])->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
+            // $mail->to($reqParams['email'])->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
             return $this->sendResponse($response, Response::HTTP_OK);
-        }
+        // }
 
         $response['general'] = ['payment failed'];
         return $this->sendError($response, Response::HTTP_BAD_GATEWAY);
@@ -164,7 +162,7 @@ class BookingController extends BaseController
 
         if ($validator->fails()) {
             $response['error'] = $validator->errors();
-            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
         $booking_details = BookingDetails::where('id', $reqParams['id'])->first();
@@ -175,7 +173,7 @@ class BookingController extends BaseController
             $vehicle = LookupVehicles::where('id', $reqParams['vehicle_id'])->first();
             if (!$vehicle) {
                 $response['error'] = ['Invalid Vehicle Id'];
-                return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
             $booking_details->vehicle_type_id = $vehicle->vehicle_type_id;
             if (array_key_exists('total_duration_hours', $reqParams)) {
@@ -248,7 +246,7 @@ class BookingController extends BaseController
 
         if ($validator->fails()) {
             $response['error'] = $validator->errors();
-            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
         $bookings = Bookings::where('id', $reqParams['id'])->first();
@@ -319,7 +317,7 @@ class BookingController extends BaseController
         // Check if the time difference is less than or equal to 24 hours
         if ($timeDifference <= 24) {
             $response['error'] = ['Cannot cancel ride when 24 hours or less are left from pickup time'];
-            return $this->sendError($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
         $bookings->status = BookingStatus::INACTIVE;
@@ -328,7 +326,7 @@ class BookingController extends BaseController
         return $this->sendResponse($response, Response::HTTP_OK);
     }
 
-    public function find(Request $request)
+    public function find(Request $request, $email)
     {
 
         $page = 1;
@@ -343,7 +341,7 @@ class BookingController extends BaseController
         extract(array_filter($request->all()));
 
         // build query
-        $query = Bookings::with('details')->where('email', $request->input('email'))->where('status', BookingStatus::ACTIVE)->orderBy($sort_by, $sort_order);
+        $query = Bookings::with('details')->where('email', $email)->where('status', BookingStatus::ACTIVE)->orderBy($sort_by, $sort_order);
 
         if ($page_size == -1) {
             $response['data'] = $query->select($select)->get();

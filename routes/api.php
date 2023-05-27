@@ -14,9 +14,6 @@ Route::prefix('user')->controller(UserController::class)->group(function () {
     Route::post('create', 'create');
     Route::post('signin', 'signin');
     Route::get('signout', 'signout');
-    Route::get('sendemailotp/{id}', 'sendEmailOtp');
-    Route::post('verifyemailotp', 'verifyEmailOtp');
-    Route::get('sendmobileotp/{id}', 'sendMobileOtp');
 });
 
 Route::post('send/response/list', 'App\Http\Controllers\Api\Web\TodoController@postList');
@@ -41,7 +38,11 @@ Route::get('testapi', 'App\Http\Controllers\Api\Web\BookingController@test');
 Route::get('test', 'App\Http\Controllers\Api\Web\TodoController@testStripe');
 Route::get('test/email', 'App\Http\Controllers\Api\Web\TodoController@testEmail');
 Route::get('bookings/findAll', 'App\Http\Controllers\Api\Web\BookingController@findAll');
-Route::get('bookings/find', 'App\Http\Controllers\Api\Web\BookingController@find');
+Route::get('bookings/find/{email}', 'App\Http\Controllers\Api\Web\BookingController@find');
 Route::post('bookings/assign/driver', 'App\Http\Controllers\Api\Web\BookingController@assignDriver');
 Route::post('bookings/assign/self', 'App\Http\Controllers\Api\Web\BookingController@assignSelf');
 Route::post('bookings/cancel', 'App\Http\Controllers\Api\Web\BookingController@cancel');
+Route::post('coupons/add', 'App\Http\Controllers\Api\Web\CouponController@create');
+Route::get('coupons/list', 'App\Http\Controllers\Api\Web\CouponController@index');
+Route::post('coupon/apply', 'App\Http\Controllers\Api\Web\CouponController@applyToBooking');
+Route::get('coupons/delete/{id}', 'App\Http\Controllers\Api\Web\CouponController@destroy');

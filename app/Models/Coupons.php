@@ -5,20 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property string  $full_name
- * @property string  $email
- * @property string  $password
- * @property int     $created_at
- * @property int     $updated_at
+ * @property string $code
+ * @property int    $usage_count
+ * @property int    $created_at
+ * @property int    $updated_at
  */
-class Users extends Model
+class Coupons extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'users';
+    protected $table = 'coupons';
 
     /**
      * The primary key for the model.
@@ -33,7 +32,7 @@ class Users extends Model
      * @var array
      */
     protected $fillable = [
-        'full_name', 'email', 'password', 'created_at', 'updated_at'
+        'code', 'total_discount', 'usage_count', 'created_at', 'updated_at'
     ];
 
     /**
@@ -51,7 +50,7 @@ class Users extends Model
      * @var array
      */
     protected $casts = [
-        'full_name' => 'string', 'email' => 'string', 'password' => 'string', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
+        'code' => 'string', 'usage_count' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
     ];
 
     /**
@@ -60,7 +59,7 @@ class Users extends Model
      * @var array
      */
     protected $dates = [
-        'email_verified_at', 'created_at', 'updated_at'
+        'created_at', 'updated_at'
     ];
 
     /**
