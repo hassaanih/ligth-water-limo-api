@@ -173,7 +173,7 @@ class BookingController extends BaseController
         if (array_key_exists('vehicle_id', $reqParams) && $reqParams['vehicle_id'] != 0) {
             $vehicle = LookupVehicles::where('id', $reqParams['vehicle_id'])->first();
             if (!$vehicle) {
-                $response['error'] = ['Invalid Vehicle Id'];
+                $response['error']['general'] = ['Invalid Vehicle Id'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
             $booking_details->vehicle_type_id = $vehicle->vehicle_type_id;
@@ -319,7 +319,7 @@ class BookingController extends BaseController
         // Check if the time difference is less than or equal to 24 hours
         $hoursDifference = $carbonDateTime->diffInHours($currentDateTime);
         if ($hoursDifference <= 4) {
-            $response['error'] = ['Cannot cancel ride when 4 hours or less are left from pickup time'];
+            $response['error']['general'] = ['Cannot cancel ride when 4 hours or less are left from pickup time'];
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 

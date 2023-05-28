@@ -133,7 +133,7 @@ class CouponController extends BaseController
         // Get the coupon based on the provided code
         $coupon = Coupons::where('code', $request->input('code'))->first();
         if($coupon->usage_count <= 0){
-            $response['error'] = ['Cannot use coupon'];
+            $response['error']['general'] = ['Cannot use coupon'];
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
         // Apply the coupon to the booking
