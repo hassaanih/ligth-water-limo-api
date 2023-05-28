@@ -62,6 +62,7 @@ class CouponController extends BaseController
         $coupon = Coupons::create([
             'code' => $request->input('code'),
             'total_discount' => $request->input('total_discount'),
+            'usage_count' => $request->input('usage_count')
         ]);
 
         // Return success response with the created coupon
@@ -141,7 +142,7 @@ class CouponController extends BaseController
         if ($booking->total_charges < 0) {
             $booking->total_charges = 0;
         }
-        $coupon->usage_count--;
+        $coupon->usage_count++;
         $coupon->update();
         $booking->update();
 
