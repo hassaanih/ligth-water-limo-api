@@ -309,7 +309,10 @@ class BookingController extends BaseController
         }
 
         $bookings = Bookings::where('id', $reqParams['id'])->first();
-        $carbonDateTime = Carbon::parse($bookings->details->pickup_date. ' ' . $bookings->details->pickup_time);
+        $dateFromDb = Carbon::parse($bookings->details->pickup_date);
+        $dateString = $dateFromDb->format('Y-m-d');
+
+        $carbonDateTime = Carbon::parse($dateString. ' ' . $bookings->details->pickup_time);
 
         // Calculate the time difference between pickup time and current time
         $currentDateTime = Carbon::now();
