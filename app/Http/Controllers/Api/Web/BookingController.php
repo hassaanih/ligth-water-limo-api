@@ -133,16 +133,16 @@ class BookingController extends BaseController
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
         Log::debug($reqParams['total_charges']);
-        // $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], intval($reqParams['total_charges']));
-        // if ($paymentResponse) {
+        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], intval($reqParams['total_charges']));
+        if ($paymentResponse) {
             $booking = new Bookings($reqParams);
             $booking->save();
             $response['booking'] = $booking;
-            // $mail->to($reqParams['email'])->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
+            $mail->to($reqParams['email'])->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
             return $this->sendResponse($response, Response::HTTP_OK);
-        // }
+        }
 
-        $response['general'] = ['payment failed'];
+        $response['error']['general'] = ['Payment failed. Please try again'];
         return $this->sendError($response, Response::HTTP_BAD_GATEWAY);
     }
 
