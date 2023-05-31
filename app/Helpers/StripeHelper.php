@@ -74,9 +74,7 @@ class StripeHelper
 
     if ($httpCode !== 200) {
       // Handle API error
-      curl_close($ch);
-      echo 'Stripe API Error: ' . $response;
-      exit;
+      return false;
     }
 
     curl_close($ch);

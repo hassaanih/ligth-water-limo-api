@@ -86,14 +86,14 @@ class BookingController extends BaseController
             $booking_details->total_charges += 30.00;
         }
 
-        if (array_key_exists('onsight_meetup',$reqParams)) {
+        if (array_key_exists('onsight_meetup',$reqParams) && $reqParams['onsight_meetup'] != '') {
             $booking_details->onsight_meetup = $reqParams['onsight_meetup'];
             $booking_details->flight_num = $reqParams['flight_num'];
             $booking_details->airline_name = $reqParams['airline_name'];
             $booking_details->arrival_time = $reqParams['arrival_time'];
             $booking_details->total_charges += 40.00;
         }
-        if(array_key_exists('flight_num', $reqParams)){
+        if(array_key_exists('flight_num', $reqParams) && $reqParams['flight_num'] != ''){
             $booking_details->total_charges += 5;
         }
 
