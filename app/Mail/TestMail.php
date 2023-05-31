@@ -74,7 +74,7 @@ class TestMail extends Mailable
     public function build(Mailer $mailer)
     {
         return $this->from('hassaanih1997@gmail.com')
-                    ->view('emails.test')
+                    ->view('email.test')
                     ->with('booking', $this->booking)
                     ->with('booking_details', $this->booking_detail)
                     ->with('card_number', $this->card_number);
