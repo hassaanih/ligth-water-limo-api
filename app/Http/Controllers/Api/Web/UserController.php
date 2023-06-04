@@ -102,7 +102,7 @@ class UserController extends BaseController
             // validate credentials
             $user = Users::where('email', $reqParams['email'])->first();
             if (!$user) {
-                $response['error'] = ['No user exist with this email'];
+                $response['error'][] = ['No user exist with this email'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
@@ -172,7 +172,7 @@ class UserController extends BaseController
 
             $user = Users::where('code', $reqParams['code'])->first();
             if(!$user){
-                $response['error'] = ['User not found'];
+                $response['error'][] = ['User not found'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
@@ -208,7 +208,7 @@ class UserController extends BaseController
 
             $user = Users::where('email', $reqParams['email'])->first();
             if(!$user){
-                $response['error'] = ['User not found'];
+                $response['error'][] = ['User not found'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
             $code = md5(time());
