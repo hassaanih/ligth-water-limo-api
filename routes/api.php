@@ -25,9 +25,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 */
 
+Route::post('user/resetpassword/send/email', 'App\Http\Controllers\Api\Web\UserController@sendEmailForResetPassword');
+Route::post('user/reset/password', 'App\Http\Controllers\Api\Web\UserController@resetPassword');
 Route::group(['middleware' => 'auth:sanctum'], function () {
     Route::post('user/update', 'App\Http\Controllers\Api\Web\UserController@update');
-    Route::post('user/resetpasswordusingcurrent', 'App\Http\Controllers\Api\Web\UserController@resetPasswordUsingCurrentPassword');
 });
 
 Route::post('booking/details/create', 'App\Http\Controllers\Api\Web\BookingController@createBookingDetails');

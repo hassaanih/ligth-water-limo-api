@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string  $full_name
  * @property string  $email
  * @property string  $password
+ * @property string  $code
  * @property int     $created_at
  * @property int     $updated_at
  */
@@ -33,7 +34,7 @@ class Users extends Model
      * @var array
      */
     protected $fillable = [
-        'full_name', 'email', 'password', 'created_at', 'updated_at'
+        'full_name', 'email', 'password', 'code', 'created_at', 'updated_at'
     ];
 
     /**
@@ -51,7 +52,7 @@ class Users extends Model
      * @var array
      */
     protected $casts = [
-        'full_name' => 'string', 'email' => 'string', 'password' => 'string', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
+        'full_name' => 'string', 'email' => 'string', 'password' => 'string', 'code' => 'string', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
     ];
 
     /**

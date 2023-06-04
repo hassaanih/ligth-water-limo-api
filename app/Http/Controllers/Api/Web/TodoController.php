@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Web;
 use App\Helpers\StripeHelper;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
+use App\Mail\ResetPasswordMail;
 use App\Mail\TestMail;
 use App\Models\User;
 use Exception;
@@ -88,7 +89,7 @@ class TodoController extends BaseController
 
     public function testEmail(Request $request, MailMailer $mail){
         try{
-            $mail->to('hassaanih1997@gmail.com')->send(new TestMail());
+            $mail->to('hassaanih1997@gmail.com')->send(new ResetPasswordMail());
         }catch(Throwable $e){
             Log::error($e->getMessage());
         }
