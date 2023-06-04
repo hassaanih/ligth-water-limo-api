@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Api\BaseController;
 use App\Mail\ResetPasswordMail;
 use App\Mail\TestMail;
+use App\Models\BookingDetails;
+use App\Models\Bookings;
 use App\Models\User;
 use Exception;
 use Illuminate\Contracts\Mail\Mailer as MailMailer;
@@ -89,7 +91,7 @@ class TodoController extends BaseController
 
     public function testEmail(Request $request, MailMailer $mail){
         try{
-            $mail->to('hassaanih1997@gmail.com')->send(new ResetPasswordMail());
+            $mail->to('hassaanih1997@gmail.com')->send(new TestMail(Bookings::find(5), BookingDetails::find(23), '12312312312312'));
         }catch(Throwable $e){
             Log::error($e->getMessage());
         }

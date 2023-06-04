@@ -279,7 +279,7 @@ class BookingController extends BaseController
 
         if ($validator->fails()) {
             $response['error'] = $validator->errors();
-            return $this->sendResponse($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
         $bookings = Bookings::where('id', $reqParams['id'])->first();
@@ -312,14 +312,20 @@ class BookingController extends BaseController
 
         $bookings = Bookings::where('id', $reqParams['id'])->first();
         $dateFromDb = Carbon::parse($bookings->details->pickup_date);
+        Log::info($dateFromDb);
         $dateString = $dateFromDb->format('Y-m-d');
+        Log::info($dateString);
 
         $carbonDateTime = Carbon::parse($dateString. ' ' . $bookings->details->pickup_time);
+        Log::info($carbonDateTime);
 
         // Calculate the time difference between pickup time and current time
         $currentDateTime = Carbon::now();
+        Log::info($currentDateTime);
+
         // Check if the time difference is less than or equal to 24 hours
         $hoursDifference = $carbonDateTime->diffInHours($currentDateTime);
+        Log::info($hoursDifference);
         if ($hoursDifference <= 4) {
             $response['error']['general'] = ['Cannot cancel ride when 4 hours or less are left from pickup time'];
             return response()->json($response, Response::HTTP_BAD_REQUEST);

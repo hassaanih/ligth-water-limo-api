@@ -39,7 +39,7 @@ class TestMail extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Test Mail',
+            subject: 'Booking Confirmed',
         );
     }
 
@@ -73,7 +73,7 @@ class TestMail extends Mailable
      */
     public function build(Mailer $mailer)
     {
-        return $this->from('hassaanih1997@gmail.com')
+        return $this->from(env('MAIL_USERNAME'), 'LightWaterLimo')
                     ->view('email.test')
                     ->with('booking', $this->booking)
                     ->with('booking_details', $this->booking_detail)

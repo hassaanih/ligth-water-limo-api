@@ -138,7 +138,7 @@ class CouponController extends BaseController
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
         // Apply the coupon to the booking
-        $booking->total_charges = $booking->total_charges - $coupon->total_discount;
+        $booking->total_charges = number_format($booking->total_charges - $coupon->total_discount,2);
         if ($booking->total_charges < 0) {
             $booking->total_charges = 0;
         }
