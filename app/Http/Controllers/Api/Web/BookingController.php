@@ -298,7 +298,7 @@ class BookingController extends BaseController
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function cancel(Request $request)
+    public function cancel(Request $request, Mailer $mail)
     {
         $reqParams = $request->all();
         $response = [];
@@ -334,7 +334,7 @@ class BookingController extends BaseController
         }
 
         $bookings->status = BookingStatus::INACTIVE;
-        Mail::to('info@lightwaterlimo.com')->send(new RideCancellationMail($bookings));
+        $mail->to(env('ADMIN_EMAIL'))->send(new RideCancellationMail($bookings));
         $bookings->update();
         $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
         return $this->sendResponse($response, Response::HTTP_OK);
