@@ -22,32 +22,32 @@ class PriceCalculatorHelper
 					if($distance > 20){
 						$remaining_distance = $distance - 20;
 						Log::debug('remaining distance '. $remaining_distance);
-						return (($remaining_distance * 2) + $default_price_for_sedan_hourly) + $total_charges;
+						return (($remaining_distance * 2) + $default_price_for_sedan_hourly);
 					}
-					return $default_price_for_sedan + $total_charges;
+					return $default_price_for_sedan;
 
 				}
 				if($distance > 20){
 					$remaining_distance = $distance - 20;
-					return (($remaining_distance * 2) + $default_price_for_sedan) + $total_charges;
+					return (($remaining_distance * 2) + $default_price_for_sedan);
 				}
-				return $default_price_for_sedan + $total_charges;
+				return $default_price_for_sedan;
 				break;
 			case 2:
 				//suv
 				if($isHourly){
 					if($distance > 20){
 						$remaining_distance = $distance - 20;
-						return (($remaining_distance * 2.5) + $default_price_for_suv_hourly) + $total_charges;
+						return (($remaining_distance * 2.5) + $default_price_for_suv_hourly);
 					}
-					return $default_price_for_suv + $total_charges;
+					return $default_price_for_suv;
 
 				}
 				if($distance > 20){
 					$remaining_distance = $distance - 20 ;
-					return (($remaining_distance * 4) + $default_price_for_suv) + $total_charges;
+					return (($remaining_distance * 4) + $default_price_for_suv);
 				}
-				return $default_price_for_suv + $total_charges;
+				return $default_price_for_suv;
 				break;
 			default:
 				return;
