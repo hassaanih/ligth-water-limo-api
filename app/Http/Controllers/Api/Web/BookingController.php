@@ -7,6 +7,7 @@ use App\Enums\LocationTypes;
 use App\Helpers\PriceCalculatorHelper;
 use App\Helpers\StripeHelper;
 use App\Http\Controllers\Api\BaseController;
+use App\Mail\RideCancellationMail;
 use App\Mail\TestMail;
 use App\Models\BookingDetails;
 use App\Models\BookingLocation;
@@ -18,6 +19,7 @@ use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Stripe\Stripe;
 use Throwable;
@@ -332,6 +334,7 @@ class BookingController extends BaseController
         }
 
         $bookings->status = BookingStatus::INACTIVE;
+        Mail::to('info@lightwaterlimo.com')->send(new RideCancellationMail($bookings));
         $bookings->update();
         $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
         return $this->sendResponse($response, Response::HTTP_OK);
