@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Web;
 
+use App\Enums\AddOnPrices;
 use App\Enums\BookingStatus;
 use App\Enums\LocationTypes;
 use App\Helpers\PriceCalculatorHelper;
@@ -67,15 +68,16 @@ class BookingController extends BaseController
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
 
-        if (isset($reqParams['stops'])) {
+        if (count($reqParams['stops']) != 0) {
             foreach ($reqParams['stops'] as $stop) {
                 $booking_location = new BookingLocation();
                 $booking_location->location_type_id = LocationTypes::STOP;
                 $booking_location->location = $stop['location'];
-                $booking_location->booking_id = $booking_details->id;
+                $booking_location->booking_details_id = $booking_details->id;
                 $booking_location->save();
             }
             $booking_details->total_stops = count($reqParams['stops']);
+            $booking_details->total_charges += $booking_details->total_stops * AddOnPrices::PER_STOP_PRICE;
         }
 
         if ($reqParams['total_duration_hours'] != 0 && $reqParams['total_duration_minutes'] != 0) {

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * @property int $booking_id
+ * @property int $booking_details_id
  * @property string $location
  * @property int $location_type_id
  * @property int $created_at
@@ -33,7 +33,7 @@ class BookingLocation extends Model
      * @var array
      */
     protected $fillable = [
-        'booking_id', 'location', 'location_type_id', 'created_at', 'updated_at'
+        'booking_details_id', 'location', 'location_type_id', 'created_at', 'updated_at'
     ];
 
     /**
@@ -49,7 +49,7 @@ class BookingLocation extends Model
      * @var array
      */
     protected $casts = [
-        'booking_id' => 'int', 'location' => 'string', 'location_type_id' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
+        'booking_details_id' => 'int', 'location' => 'string', 'location_type_id' => 'int', 'created_at' => 'timestamp', 'updated_at' => 'timestamp'
     ];
 
     /**
