@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('contact_phone')->nullable(false);
             $table->string('mobile_number')->nullable(false);
             $table->string('email')->nullable(false);
-            $table->integer('tip_for_driver')->nullable(false);
+            $table->integer('tip_for_driver')->nullable(false)->default(0);
             $table->integer('booking_detail_id')->nullable(false);
             $table->timestamps();
         });
