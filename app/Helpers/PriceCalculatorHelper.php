@@ -8,7 +8,7 @@ use PgSql\Lob;
 
 class PriceCalculatorHelper
 {
-	public static function getPrice($distance, $vehicle_type_id, $isHourly=false, $total_charges)
+	public static function getPrice($distance, $vehicle_type_id, $isHourly=false, $total_minutes)
 	{
 		Log::info('distance '. $distance);
 		$default_price_for_sedan = 95;
@@ -22,7 +22,7 @@ class PriceCalculatorHelper
 					if($distance > 20){
 						$remaining_distance = $distance - 20;
 						Log::debug('remaining distance '. $remaining_distance);
-						return (($remaining_distance * 2) + $default_price_for_sedan_hourly);
+						return (($remaining_distance * 2) + ($default_price_for_sedan_hourly * $total_minutes));
 					}
 					return $default_price_for_sedan;
 
@@ -38,7 +38,7 @@ class PriceCalculatorHelper
 				if($isHourly){
 					if($distance > 20){
 						$remaining_distance = $distance - 20;
-						return (($remaining_distance * 2.5) + $default_price_for_suv_hourly);
+						return (($remaining_distance * 2.5) + ($default_price_for_suv_hourly * $total_minutes));
 					}
 					return $default_price_for_suv;
 

@@ -183,10 +183,12 @@ class BookingController extends BaseController
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
             $booking_details->vehicle_type_id = $vehicle->vehicle_type_id;
+            $total_minutes = 0;
             if (array_key_exists('total_duration_hours', $reqParams)) {
-                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $booking_details->total_charges);
+                $total_minutes = Carbon::now()->setTime($reqParams['total_duration_hours'], 0, 0)->minutesSinceMidnight() + $reqParams['total_duration_minutes'];
+                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $total_minutes);
             } else {
-                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $booking_details->total_charges);
+                $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $total_minutes);
             }
             $booking_details->total_charges += 20;
             $booking_details->update();
