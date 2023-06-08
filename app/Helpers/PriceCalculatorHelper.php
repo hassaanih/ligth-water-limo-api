@@ -13,8 +13,8 @@ class PriceCalculatorHelper
 		Log::info('distance '. $distance);
 		$default_price_for_sedan = 95;
 		$default_price_for_suv = 115;
-		$default_price_for_sedan_hourly = 85;
-		$default_price_for_suv_hourly = 85;
+		$default_price_for_sedan_hourly = 1.41;
+		$default_price_for_suv_hourly = 1.41;
 		switch($vehicle_type_id){
 			case 1:
 				//sedan
