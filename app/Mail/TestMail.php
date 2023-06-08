@@ -74,6 +74,7 @@ class TestMail extends Mailable
     public function build(Mailer $mailer)
     {
         return $this->from(env('MAIL_USERNAME'), 'LightWaterLimo')
+                    ->subject('Booking Confirmation')
                     ->view('email.test')
                     ->with('booking', $this->booking)
                     ->with('booking_details', $this->booking_detail)

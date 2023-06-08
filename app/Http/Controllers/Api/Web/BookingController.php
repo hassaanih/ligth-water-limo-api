@@ -194,9 +194,9 @@ class BookingController extends BaseController
             return $this->sendResponse($response, Response::HTTP_OK);
         }
         if (array_key_exists('total_duration_hours', $reqParams)) {
-            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $booking_details->total_charges);
+            $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $booking_details->total_charges);
         } else {
-            $booking_details->total_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $booking_details->total_charges);
+            $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $booking_details->total_charges);
         }
 
         $booking_details->update();
