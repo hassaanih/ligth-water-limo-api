@@ -68,7 +68,7 @@ class BookingController extends BaseController
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
 
-        if (count($reqParams['stops']) != 0) {
+        if (array_key_exists('stops', $reqParams)) {
             foreach ($reqParams['stops'] as $stop) {
                 $booking_location = new BookingLocation();
                 $booking_location->location_type_id = LocationTypes::STOP;
