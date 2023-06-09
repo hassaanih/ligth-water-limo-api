@@ -76,10 +76,10 @@ class TestMail extends Mailable
         return $this->from(env('MAIL_USERNAME'), 'LightWaterLimo')
                     ->subject('Booking Confirmation')
                     ->view('email.test')
-                    ->attach(public_path('logo.png'), [
-                        'as' => 'logo.png',
-                        'mime' => 'image/png',
-                    ])
+                    // ->attach(public_path('logo.png'), [
+                    //     'as' => 'logo.png',
+                    //     'mime' => 'image/png',
+                    // ])
                     ->with('booking', $this->booking)
                     ->with('booking_details', $this->booking_detail)
                     ->with('card_number', $this->card_number);
