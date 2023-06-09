@@ -16,6 +16,7 @@ use App\Models\Bookings;
 use App\Models\LookupVehicles;
 use Carbon\Carbon;
 use DateTime;
+use Exception;
 use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -64,7 +65,7 @@ class BookingController extends BaseController
             Log::debug($response);
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
-        
+
         $booking_details = new BookingDetails($reqParams);
         $booking_details->save();
 
@@ -90,14 +91,14 @@ class BookingController extends BaseController
             $booking_details->total_charges += 30.00;
         }
 
-        if (array_key_exists('onsight_meetup',$reqParams) && $reqParams['onsight_meetup'] != '') {
+        if (array_key_exists('onsight_meetup', $reqParams) && $reqParams['onsight_meetup'] != '') {
             $booking_details->onsight_meetup = $reqParams['onsight_meetup'];
             $booking_details->flight_num = $reqParams['flight_num'];
             $booking_details->airline_name = $reqParams['airline_name'];
             $booking_details->arrival_time = $reqParams['arrival_time'];
             $booking_details->total_charges += 40.00;
         }
-        if(array_key_exists('flight_num', $reqParams) && $reqParams['flight_num'] != ''){
+        if (array_key_exists('flight_num', $reqParams) && $reqParams['flight_num'] != '') {
             $booking_details->total_charges += 5;
         }
 
@@ -185,9 +186,11 @@ class BookingController extends BaseController
             }
             $booking_details->vehicle_type_id = $vehicle->vehicle_type_id;
             if ($booking_details->total_duration_hours != 0) {
+                $booking_details->vehicle_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $total_minutes);
                 $total_minutes = (Carbon::now()->setTime($booking_details->total_duration_hours, 0, 0)->hour * 60) + $booking_details->total_duration_minutes;
                 $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $total_minutes);
             } else {
+                $booking_details->vehicle_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $total_minutes);
                 $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $total_minutes);
             }
             $booking_details->total_charges += 20;
@@ -197,13 +200,14 @@ class BookingController extends BaseController
         }
         $total_minutes = $total_minutes = (Carbon::now()->setTime($booking_details->total_duration_hours, 0, 0)->hour * 60) + $booking_details->total_duration_minutes;
         Log::info('Total Minutes ' . $total_minutes);
-
+        
         if ($booking_details->total_duration_hours != 0) {
+            $booking_details->vehicle_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $total_minutes);
             $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, true, $total_minutes);
         } else {
+            $booking_details->vehicle_charges = PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $total_minutes);
             $booking_details->total_charges += PriceCalculatorHelper::getPrice($booking_details->total_km, $booking_details->vehicle_type_id, false, $total_minutes);
-        }
-
+        } 
         $booking_details->update();
         $response['booking_details'] = BookingDetails::where('id', $reqParams['id'])->with('vehicleType')->with('vehicle')->first();
         return $this->sendResponse($response, Response::HTTP_OK);
@@ -325,7 +329,7 @@ class BookingController extends BaseController
         $dateString = $dateFromDb->format('Y-m-d');
         Log::info($dateString);
 
-        $carbonDateTime = Carbon::parse($dateString. ' ' . $bookings->details->pickup_time);
+        $carbonDateTime = Carbon::parse($dateString . ' ' . $bookings->details->pickup_time);
         Log::info($carbonDateTime);
 
         // Calculate the time difference between pickup time and current time
@@ -370,5 +374,21 @@ class BookingController extends BaseController
         }
 
         return $query->paginate($page_size, $select, $page);
+    }
+
+    public function subtractTotalCharges(Request $request)
+    {
+        try {
+            $reqParams = $request->all();
+
+            $booking_details = BookingDetails::find($reqParams['id']);
+            $booking_details->total_charges -= $booking_details->vehicle_charges;
+            $booking_details->vehicle_charges = 0;
+            $booking_details->update();
+            return response()->json($booking_details, Response::HTTP_OK);
+        } catch (Throwable $e) {
+
+            return response()->json(['message' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
     }
 }
