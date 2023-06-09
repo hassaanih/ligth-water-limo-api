@@ -23,8 +23,8 @@ return new class extends Migration
             $table->integer('travellers')->nullable(false)->default(0);
             $table->integer('kids')->nullable(false)->default(0);
             $table->integer('bags')->nullable(false)->default(0);
-            $table->float('total_km', 5, 2)->nullable(false)->default(0);
-            $table->float('vehicle_charges', 5, 2)->nullable(true)->default(0);
+            $table->float('total_km', 32, 2)->nullable(false)->default(0);
+            $table->float('vehicle_charges', 32, 2)->nullable(true)->default(0);
             $table->timestamps();
         });
     }
