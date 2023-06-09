@@ -22,7 +22,7 @@ class PriceCalculatorHelper
 					if($distance > 20){
 						$remaining_distance = $distance - 20;
 						Log::debug('remaining distance '. $remaining_distance);
-						return (($remaining_distance * 2) + ($default_price_for_sedan_hourly * $total_minutes));
+						return ($remaining_distance * 2) + ($default_price_for_sedan_hourly * $total_minutes);
 					}
 					return $default_price_for_sedan;
 
