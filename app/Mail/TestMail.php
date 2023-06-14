@@ -80,6 +80,10 @@ class TestMail extends Mailable
                     //     'as' => 'logo.png',
                     //     'mime' => 'image/png',
                     // ])
+                    ->attach(public_path('email.png'), [
+                        'as' => 'email.png',
+                        'mime' => 'image/png',
+                    ])
                     ->with('booking', $this->booking)
                     ->with('booking_details', $this->booking_detail)
                     ->with('card_number', $this->card_number);

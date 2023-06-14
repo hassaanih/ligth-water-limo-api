@@ -571,7 +571,7 @@
                           <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:270px">
                             <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
                               <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://dqnikc.stripocdn.email/content/guids/CABINET_db68e1f7cb59a8d7120537d4a94c22f80787d61014533eefc36d9e53dc8f9557/images/compress.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="268"></td>
+                                <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="{{ $message->embed(asset('email.png')) }}" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="268"></td>
                               </tr>
                             </table>
                           </td>
