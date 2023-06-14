@@ -73,7 +73,7 @@ class BookingController extends BaseController
             foreach ($reqParams['stops'] as $stop) {
                 $booking_location = new BookingLocation();
                 $booking_location->location_type_id = LocationTypes::STOP;
-                $booking_location->location = $stop['location'];
+                $booking_location->location = $stop;
                 $booking_location->booking_details_id = $booking_details->id;
                 $booking_location->save();
             }
@@ -368,7 +368,7 @@ class BookingController extends BaseController
         return $this->sendResponse($response, Response::HTTP_OK);
     }
 
-    public function find(Request $request, $email)
+    public function findByUserEmail(Request $request, $email)
     {
 
         $page = 1;
@@ -406,6 +406,23 @@ class BookingController extends BaseController
         } catch (Throwable $e) {
 
             return response()->json(['message' => $e->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function find(Request $request, $id){
+        $response = [];
+        try{
+            $booking = Bookings::with('details.vehicle')->with('details.vehicleType')->with('details.stops')->find($id);
+            if(!$booking){
+                $response['error']['general'] = ['No Booking found.'];
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
+            }
+            $response['booking'] = $booking;
+            return response()->json($response, Response::HTTP_OK);
+        }catch(Throwable $e){
+            Log::error($e->getMessage());
+            $response['error']['general'] = ['Internal Server Error. Check logs'];
+            return response()->json($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 }

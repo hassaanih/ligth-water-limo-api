@@ -97,4 +97,8 @@ class BookingDetails extends Model
     public function vehicleType(){
         return $this->hasOne(VehicleTypes::class, 'id', 'vehicle_type_id');
     }
+
+    public function stops(){
+        return $this->hasMany(BookingLocation::class, 'booking_details_id', 'id');
+    }
 }
