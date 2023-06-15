@@ -29,7 +29,7 @@ class PriceCalculatorHelper
 				}
 				if($distance > 20){
 					$remaining_distance = $distance - 20;
-					return (($remaining_distance * 2) + $default_price_for_sedan);
+					return (($remaining_distance * 4) + $default_price_for_sedan);
 				}
 				return $default_price_for_sedan;
 				break;
@@ -45,7 +45,7 @@ class PriceCalculatorHelper
 				}
 				if($distance > 20){
 					$remaining_distance = $distance - 20 ;
-					return (($remaining_distance * 4) + $default_price_for_suv);
+					return (($remaining_distance * 5) + $default_price_for_suv);
 				}
 				return $default_price_for_suv;
 				break;
