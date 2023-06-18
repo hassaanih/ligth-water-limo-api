@@ -51,7 +51,8 @@ class UserController extends BaseController
 
             $validator = Validator::make($reqParams, $validationRules, $validationMessages);
             if ($validator->fails()) {
-                return $this->sendError($validator->errors(), Response::HTTP_BAD_REQUEST);
+                $response['error'] = $validator->errors();
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
             // create model
@@ -96,7 +97,8 @@ class UserController extends BaseController
             $validator = Validator::make($reqParams, $validationRules, $validationMessages);
 
             if ($validator->fails()) {
-                return $this->sendError($validator->errors(), Response::HTTP_BAD_REQUEST);
+                $response['error'] = $validator->errors();
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
             // validate credentials
@@ -106,10 +108,10 @@ class UserController extends BaseController
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
-            if (($reqParams['email'] == $user->email) && (Hash::check($reqParams['password'], $user->password))){
+            if (($reqParams['email'] == $user->email) && (Hash::check($reqParams['password'], $user->password))) {
                 $response['user'] = $user;
                 return $this->sendResponse($response);
-            }else{
+            } else {
                 $response['error']['general'] = ['Invalid email or password'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
@@ -154,7 +156,7 @@ class UserController extends BaseController
             // validate request
             $validationRules = [
                 'code' => 'required',
-                'password' => 'required',
+                'password' => 'required|min:8|max:20',
                 'confirm_password' => 'required|same:password',
             ];
 
@@ -167,11 +169,12 @@ class UserController extends BaseController
             $validator = Validator::make($reqParams, $validationRules, $validationMessages);
 
             if ($validator->fails()) {
-                return $this->sendError($validator->errors(), Response::HTTP_BAD_REQUEST);
+                $response['error'] = $validator->errors();
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
             $user = Users::where('code', $reqParams['code'])->first();
-            if(!$user){
+            if (!$user) {
                 $response['error'][] = ['User not found'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
@@ -187,7 +190,8 @@ class UserController extends BaseController
         }
     }
 
-    public function sendEmailForResetPassword(Request $request){
+    public function sendEmailForResetPassword(Request $request)
+    {
         $response = [];
         $reqParams = $request->all();
         try {
@@ -203,16 +207,17 @@ class UserController extends BaseController
             $validator = Validator::make($reqParams, $validationRules, $validationMessages);
 
             if ($validator->fails()) {
-                return $this->sendError($validator->errors(), Response::HTTP_BAD_REQUEST);
+                $response['error'] = $validator->errors();
+                return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
 
             $user = Users::where('email', $reqParams['email'])->first();
-            if(!$user){
+            if (!$user) {
                 $response['error'][] = ['User not found'];
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
             $code = md5(time());
-            Mail::to($user->email)->send(new ResetPasswordMail($code)); 
+            Mail::to($user->email)->send(new ResetPasswordMail($code));
             return $this->sendResponse([], Response::HTTP_OK);
         } catch (Throwable $e) {
             Log::error($e);

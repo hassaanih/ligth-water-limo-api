@@ -253,7 +253,8 @@ class BookingController extends BaseController
         extract(array_filter($request->all()));
 
         // build query
-        $query = Bookings::with('details')->where('status', BookingStatus::ACTIVE)->orderBy($sort_by, $sort_order);
+        // ->where('status', BookingStatus::ACTIVE)
+        $query = Bookings::with('details')->orderBy($sort_by, $sort_order);
 
         if ($page_size == -1) {
             $response['data'] = $query->select($select)->get();
@@ -340,7 +341,7 @@ class BookingController extends BaseController
 
         if ($validator->fails()) {
             $response['error'] = $validator->errors();
-            return $this->sendResponse($response, Response::HTTP_BAD_REQUEST);
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
         $bookings = Bookings::where('id', $reqParams['id'])->first();
@@ -364,8 +365,41 @@ class BookingController extends BaseController
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
 
-        $bookings->status = BookingStatus::INACTIVE;
+        $bookings->booking_status = BookingStatus::CANCELLED;
         $mail->to(env('ADMIN_EMAIL'))->send(new RideCancellationMail($bookings));
+        $bookings->update();
+        $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
+        return $this->sendResponse($response, Response::HTTP_OK);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function completeBooking(Request $request)
+    {
+        $reqParams = $request->all();
+        $response = [];
+
+        $validator = Validator::make($reqParams, [
+            'id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            $response['error'] = $validator->errors();
+            return response()->json($response, Response::HTTP_BAD_REQUEST);
+        }
+
+        $bookings = Bookings::where('id', $reqParams['id'])->first();
+        
+
+        if($bookings->booking_status == BookingStatus::COMPLETED){
+            $bookings->booking_status = BookingStatus::PENDING;
+        }else{
+            $bookings->booking_status = BookingStatus::COMPLETED;
+        }
         $bookings->update();
         $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
         return $this->sendResponse($response, Response::HTTP_OK);
@@ -386,7 +420,7 @@ class BookingController extends BaseController
         extract(array_filter($request->all()));
 
         // build query
-        $query = Bookings::with('details')->where('email', $email)->where('status', BookingStatus::ACTIVE)->orderBy($sort_by, $sort_order);
+        $query = Bookings::with('details')->where('email', $email)->orderBy($sort_by, $sort_order);
 
         if ($page_size == -1) {
             $response['data'] = $query->select($select)->get();

@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="width:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" style="font-family:arial, 'helvetica neue', helvetica, sans-serif">
 
 <head>
   <meta charset="UTF-8">
@@ -22,19 +22,6 @@
   <style type="text/css">
     #outlook a {
       padding: 0;
-    }
-
-    .ExternalClass {
-      width: 100%;
-    }
-
-    .ExternalClass,
-    .ExternalClass p,
-    .ExternalClass span,
-    .ExternalClass font,
-    .ExternalClass td,
-    .ExternalClass div {
-      line-height: 100%;
     }
 
     .es-button {
@@ -81,35 +68,38 @@
 
       h1 {
         font-size: 30px !important;
-        text-align: center
+        text-align: left
       }
 
       h2 {
-        font-size: 26px !important;
-        text-align: center
+        font-size: 24px !important;
+        text-align: left
       }
 
       h3 {
         font-size: 20px !important;
-        text-align: center
+        text-align: left
       }
 
       .es-header-body h1 a,
       .es-content-body h1 a,
       .es-footer-body h1 a {
-        font-size: 30px !important
+        font-size: 30px !important;
+        text-align: left
       }
 
       .es-header-body h2 a,
       .es-content-body h2 a,
       .es-footer-body h2 a {
-        font-size: 26px !important
+        font-size: 24px !important;
+        text-align: left
       }
 
       .es-header-body h3 a,
       .es-content-body h3 a,
       .es-footer-body h3 a {
-        font-size: 20px !important
+        font-size: 20px !important;
+        text-align: left
       }
 
       .es-menu td a {
@@ -176,25 +166,16 @@
       }
 
       .es-button-border {
-        display: block !important
+        display: inline-block !important
       }
 
       a.es-button,
       button.es-button {
-        font-size: 20px !important;
-        display: block !important;
-        border-left-width: 0px !important;
-        border-right-width: 0px !important
-      }
-
-      .es-btn-fw {
-        border-width: 10px 0px !important;
-        text-align: center !important
+        font-size: 18px !important;
+        display: inline-block !important
       }
 
       .es-adaptive table,
-      .es-btn-fw,
-      .es-btn-fw-brdr,
       .es-left,
       .es-right {
         width: 100% !important
@@ -298,55 +279,27 @@
   </style>
 </head>
 
-<body style="width:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;padding:0;Margin:0">
+<body style="width:100%;font-family:arial, 'helvetica neue', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">
   <div class="es-wrapper-color" style="background-color:#F6F6F6"><!--[if gte mso 9]>
 			<v:background xmlns:v="urn:schemas-microsoft-com:vml" fill="t">
 				<v:fill type="tile" color="#f6f6f6"></v:fill>
 			</v:background>
 		<![endif]-->
     <table class="es-wrapper" width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;padding:0;Margin:0;width:100%;height:100%;background-repeat:repeat;background-position:center top;background-color:#F6F6F6">
-      <tr style="border-collapse:collapse">
+      <tr>
         <td valign="top" style="padding:0;Margin:0">
-          <table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
-            <tr style="border-collapse:collapse">
-              <td class="es-adaptive" align="center" style="padding:0;Margin:0">
-                <table class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:transparent;width:600px" cellspacing="0" cellpadding="0" align="center">
-                  <tr style="border-collapse:collapse">
-                    <td align="left" style="padding:10px;Margin:0"><!--[if mso]><table style="width:580px"><tr><td style="width:390px" valign="top"><![endif]-->
-                      <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:390px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td class="es-infoblock" align="left" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC"><span style="text-align:center"></span></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td><td style="width:20px"></td><td style="width:170px" valign="top"><![endif]-->
-                      <table class="es-right" cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:170px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="right" class="es-infoblock" style="padding:0;Margin:0;line-height:14px;font-size:12px;color:#CCCCCC">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:14px;color:#CCCCCC;font-size:12px"><a href="https://viewstripo.email" target="_blank" class="view" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#CCCCCC;font-size:12px">View in browser</a></p>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td></tr></table><![endif]-->
-                    </td>
-                  </tr>
-                  <tr style="border-collapse:collapse">
-                    <td align="left" bgcolor="#020202" style="padding:0;Margin:0;padding-left:20px;padding-right:20px;background-color:#020202">
+          <table class="es-header" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
+            <tr>
+              <td align="center" style="padding:0;Margin:0">
+                <table class="es-header-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                  <tr>
+                    <td align="left" bgcolor="#055760" style="padding:20px;Margin:0;background-color:#055760">
                       <table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
+                        <tr>
                           <td align="center" valign="top" style="padding:0;Margin:0;width:560px">
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="https://dqnikc.stripocdn.email/content/guids/CABINET_db68e1f7cb59a8d7120537d4a94c22f80787d61014533eefc36d9e53dc8f9557/images/light_water_limo_final_logo.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="198"></td>
+                              <tr>
+                                <td align="center" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="https://lightwaterlimo.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2CB543;font-size:14px"><img class="adapt-img" src="https://scubhq.stripocdn.email/content/guids/CABINET_688dde0ec29aa2d5edfe68159a385c4728840c7a2e7628b160585036b013dd6f/images/lightwaterlogo.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="245"></a></td>
                               </tr>
                             </table>
                           </td>
@@ -359,428 +312,110 @@
             </tr>
           </table>
           <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
-            <tr style="border-collapse:collapse">
+            <tr>
               <td align="center" style="padding:0;Margin:0">
-                <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px">
-                  <tr style="border-collapse:collapse">
-                    <td align="left" style="Margin:0;padding-bottom:10px;padding-top:15px;padding-left:20px;padding-right:20px"><!--[if mso]><table style="width:560px" cellpadding="0" 
-                        cellspacing="0"><tr><td style="width:270px" valign="top"><![endif]-->
-                      <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:270px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-c" align="left" style="padding:0;Margin:0">
-                                  <h3 style="Margin:0;line-height:19px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:16px;font-style:normal;font-weight:normal;color:#333333"><strong>Total: ${{$booking->total_charges}}</strong><br></h3>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td><td style="width:20px"></td><td style="width:270px" valign="top"><![endif]-->
-                      <table class="es-right" cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:270px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              @php
-                              use Carbon\Carbon;
-                              $currentDateTime = Carbon::now();
-                              $formattedDate = $currentDateTime->format('D, F j, Y');
-                              @endphp
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-c" align="right" style="padding:0;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">{{ $formattedDate }}</p>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td></tr></table><![endif]-->
-                    </td>
-                  </tr>
-                  <tr style="border-collapse:collapse">
-                    <td align="left" style="padding:0;Margin:0;padding-bottom:10px">
+                <table class="es-content-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                  <tr>
+                    <td align="left" bgcolor="#ffffff" style="padding:0;Margin:0;padding-top:20px;padding-left:20px;padding-right:20px;background-color:#ffffff">
                       <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
-                          <td valign="top" align="center" style="padding:0;Margin:0;width:600px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;font-size:0">
-                                  <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td style="padding:0;Margin:0;border-bottom:1px solid #efefef;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr style="border-collapse:collapse">
-                    <td style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px;background-position:center top" align="left">
-                      <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
+                        <tr>
                           <td valign="top" align="center" style="padding:0;Margin:0;width:560px">
                             <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0">
-                                  <h2 style="Margin:0;line-height:29px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:24px;font-style:normal;font-weight:normal;color:#333333">Thanks for choosing Light Water Limo</h2>
+                              <tr>
+                                <td align="center" bgcolor="#ffffff" style="padding:15px;Margin:0">
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:'times new roman', times, baskerville, georgia, serif;line-height:39px;color:#333333;font-size:26px"><strong>Thank you For Choosing Light Water Limo</strong></p>
                                 </td>
                               </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="Margin:0;padding-top:5px;padding-bottom:10px;padding-left:20px;padding-right:20px;font-size:0">
-                                  <table width="10%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td style="padding:0;Margin:0;border-bottom:3px solid #111c30;background:none 0% 0% repeat scroll #FFFFFF;height:1px;width:100%;margin:0px"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;padding-top:5px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><em>"We Serve Your Comfort."</em></p>
+                              <tr>
+                                @php
+                                use Carbon\Carbon;
+                                $currentDateTime = Carbon::parse($booking_detail->pickup_date);
+                                $formattedDate = $currentDateTime->format('D, F j, Y');
+                                @endphp
+                                <td align="left" style="padding:15px;Margin:0">
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Dear {{$booking->first_name . ' '. $booking->last_name}},</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">We are delighted to inform you that your ride booking has been successfully confirmed. Thank you for choosing our transportation services. We look forward to providing you with a comfortable and reliable journey. Below are the details of your booking:</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Booking Reference Number:</strong>&nbsp;{{$booking->id}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Date:</strong> {{$formattedDate}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Time:</strong>&nbsp;{{$booking_detail->pickup_time}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Pick-up Location:</strong> {{$booking_detail->pickup_location}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Drop-off Location:</strong> {{$booking_detail->drop_location}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Vehicle Type:</strong> {{$booking_detail->vehicleType->name}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Total Miles:</strong> {{$booking_detail->total_km}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px;text-align:justify"><strong>Total Charges:</strong>&nbsp;{{$booking->total_charges}}</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Please note the following important information:</p>
+                                  <ol>
+                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px">
+                                      <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Arrival Time:</strong> Please be ready at the pick-up location a few minutes before the scheduled time to ensure a prompt departure.</p>
+                                    </li>
+                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px">
+                                      <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Cancellation:</strong> If you need to cancel or modify your booking, please inform us at least 8 hours before&nbsp;in advance to avoid any cancellation fees.</p>
+                                    </li>
+                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px">
+                                      <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Special Requests:</strong> If you have any special requirements or preferences regarding your ride, kindly inform us beforehand, and we will do our best to accommodate them.</p>
+                                    </li>
+                                  </ol>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Should you have any further questions or require any assistance, please feel free to contact our customer support team at <a target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#b62b27;font-size:14px" href=""></a><a target="_blank" href="mailto:info@lightwaterlimo.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#b62b27;font-size:14px;line-height:21px">info@lightwaterlimo.com</a><a target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#b62b27;font-size:14px" href=""></a>. Our dedicated representatives will be more than happy to assist you.</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Once again, we appreciate your trust in our services and assure you of a safe and enjoyable journey. We value your feedback, so please do not hesitate to share your experience with us after the ride.</p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:23px;color:#333333;font-size:15px"><strong><em>Thank you, and we look forward to serving you soon!</em></strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Best regards,</strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Light Water Limo</strong></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><br></p>
                                 </td>
                               </tr>
                             </table>
                           </td>
                         </tr>
                       </table>
-                    </td>
-                  </tr>
-                  <tr style="border-collapse:collapse">
-                    <td align="left" style="Margin:0;padding-top:10px;padding-bottom:10px;padding-left:20px;padding-right:20px">
-                      <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
-                          <td valign="top" align="center" style="padding:0;Margin:0;width:560px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;padding-top:5px;padding-bottom:5px;font-size:0">
-                                  <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td style="padding:0;Margin:0;border-bottom:1px solid #efefef;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr style="border-collapse:collapse">
-                    <td style="Margin:0;padding-top:10px;padding-left:20px;padding-right:20px;padding-bottom:40px;background-color:#ffffff;background-position:center center" bgcolor="#ffffff" align="left"><!--[if mso]><table style="width:560px" cellpadding="0"
-                            cellspacing="0"><tr><td style="width:270px" valign="top"><![endif]-->
-                      <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                        <tr style="border-collapse:collapse">
-                          <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:270px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-l" align="left" style="padding:0;Margin:0;padding-bottom:15px">
-                                  <h3 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#333333">Amount Charged</h3>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="left" style="padding:0;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Card Number **** {{$card_number}}<br></p>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="left" style="padding:0;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:20px;color:#333333;font-size:13px"></p>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <!-- <td align="left" style="padding:0;Margin:0;padding-top:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong><a target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#333333;font-size:14px" href="">Download PDF</a></strong></p></td> -->
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td><td style="width:20px"></td><td style="width:270px" valign="top"><![endif]-->
-                      <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:270px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-l" align="left" style="padding:0;Margin:0;padding-top:10px">
-                                  <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="0" cellpadding="0" border="0" role="presentation">
-                                    <tr style="border-collapse:collapse">
-                                      <td width="50%" align="left" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333">Trip Fare</h3>
-                                      </td>
-                                      <td align="right" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333">${{$booking->total_charges}}</h3>
-                                      </td>
-                                    </tr>
-                                    <tr style="border-collapse:collapse">
-                                      <td width="50%" align="left" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><br></h3>
-                                      </td>
-                                      <td align="right" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><br></h3>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px;font-size:0">
-                                  <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td style="padding:0;Margin:0;border-bottom:1px solid #efefef;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-l" align="left" style="padding:0;Margin:0">
-                                  <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:100%" class="cke_show_border" cellspacing="0" cellpadding="0" border="0" role="presentation">
-                                    <tr style="border-collapse:collapse">
-                                      <td width="50%" align="left" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><strong>Total</strong></h3>
-                                      </td>
-                                      <td align="right" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:26px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:17px;font-style:normal;font-weight:normal;color:#333333"><strong>${{$booking->total_charges}}</strong></h3>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td></tr></table><![endif]-->
                     </td>
                   </tr>
                 </table>
               </td>
             </tr>
           </table>
-          <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
-            <tr style="border-collapse:collapse">
+          <table class="es-footer" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
+            <tr>
               <td align="center" style="padding:0;Margin:0">
-                <table class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#333333;width:600px" cellspacing="0" cellpadding="0" bgcolor="#333333" align="center">
-                  <tr style="border-collapse:collapse">
-                    <td style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px;background-color:#111c30" bgcolor="#111c30" align="left"><!--[if mso]><table style="width:560px" cellpadding="0" 
+                <table class="es-footer-body" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFFFFF;width:600px">
+                  <tr>
+                    <td align="left" bgcolor="#043d46" style="Margin:0;padding-top:20px;padding-bottom:20px;padding-left:20px;padding-right:20px;background-color:#043d46"><!--[if mso]><table style="width:560px" cellpadding="0" 
                         cellspacing="0"><tr><td style="width:270px" valign="top"><![endif]-->
                       <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                        <tr style="border-collapse:collapse">
+                        <tr>
                           <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:270px">
                             <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;font-size:0px"><img class="adapt-img" src="{{ $message->embed(asset('email.png')) }}" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="268"></td>
+                              <tr>
+                                <td align="center" style="padding:30px;Margin:0;font-size:0px"><a target="_blank" href="https://lightwaterlimo.com/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#FFFFFF;font-size:14px"><img class="adapt-img" src="https://scubhq.stripocdn.email/content/guids/CABINET_688dde0ec29aa2d5edfe68159a385c4728840c7a2e7628b160585036b013dd6f/images/lightwaterlogo_tpZ.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="210"></a></td>
                               </tr>
                             </table>
                           </td>
                         </tr>
                       </table><!--[if mso]></td><td style="width:20px"></td><td style="width:270px" valign="top"><![endif]-->
                       <table class="es-right" cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:270px">
-                            <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:left top" width="100%" cellspacing="0" cellpadding="0" role="presentation">
-                              <tr style="border-collapse:collapse">
-                                <td valign="bottom" align="center" style="padding:0;Margin:0;padding-right:15px;font-size:0"><img src="https://dqnikc.stripocdn.email/content/guids/CABINET_03326415215ff87a5e9db015542d7d74/images/87031548067737597.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="16"></td>
-                                <td align="left" style="padding:0;Margin:0">
-                                  <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td class="es-m-txt-l" align="left" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:20px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#ffce00">Pickup Location</h3>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="left" style="padding:0;Margin:0;width:28px">
-                                  <table width="100%" height="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td bgcolor="transparent" align="left" style="padding:0;Margin:0;width:7px"><br></td>
-                                      <td height="65" bgcolor="#ffffff" align="left" style="padding:0;Margin:0;width:2px"><br></td>
-                                      <td bgcolor="transparent" align="left" style="padding:0;Margin:0;width:19px"><br></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                                <td align="left" style="padding:0;Margin:0">
-                                  <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td align="left" style="padding:0;Margin:0;padding-top:5px;padding-bottom:15px">
-                                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">{{$booking_detail->pickup_location}}</p>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr style="border-collapse:collapse">
-                          <td class="es-m-p20b" align="left" style="padding:0;Margin:0;width:270px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td valign="top" align="left" style="padding:0;Margin:0;padding-right:15px;font-size:0"><img src="https://dqnikc.stripocdn.email/content/guids/CABINET_03326415215ff87a5e9db015542d7d74/images/87031548067737597.png" alt style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="16"></td>
-                                <td align="left" style="padding:0;Margin:0">
-                                  <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td class="es-m-txt-l" align="left" style="padding:0;Margin:0">
-                                        <h3 style="Margin:0;line-height:20px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#ffce00">Drop off Location</h3>
-                                      </td>
-                                    </tr>
-                                    <tr style="border-collapse:collapse">
-                                      <td align="left" style="padding:0;Margin:0;padding-top:5px">
-                                        <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">{{$booking_detail->drop_location}}</p>
-                                      </td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                        <tr style="border-collapse:collapse">
+                        <tr>
                           <td align="left" style="padding:0;Margin:0;width:270px">
                             <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;padding-bottom:5px;padding-top:20px;font-size:0">
-                                  <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td style="padding:0;Margin:0;border-bottom:1px solid #666666;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
+                              <tr>
                                 <td align="left" style="padding:0;Margin:0">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:32px;color:#ffffff;font-size:16px">Total Journey: {{$booking_detail->total_km}} mi</p>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td></tr></table><![endif]-->
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <table class="es-content" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%">
-            <tr style="border-collapse:collapse">
-              <td align="center" style="padding:0;Margin:0">
-                <table class="es-content-body" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#ffffff;width:600px" cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center">
-                  <tr style="border-collapse:collapse">
-                    <td style="padding:10px;Margin:0;background-color:#111c30" align="left" bgcolor="#111c30">
-                      <table width="100%" cellspacing="0" cellpadding="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
-                          <td valign="top" align="center" style="padding:0;Margin:0;width:580px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="Margin:0;padding-top:5px;padding-bottom:5px;padding-left:10px;padding-right:10px;font-size:0">
-                                  <table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td style="padding:0;Margin:0;border-bottom:1px solid #efefef;background:#FFFFFF none repeat scroll 0% 0%;height:1px;width:100%;margin:0px"></td>
-                                    </tr>
-                                  </table>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr style="border-collapse:collapse">
-                    <td align="left" bgcolor="#111c30" style="padding:0;Margin:0;background-color:#111c30"><!--[if mso]><table style="width:600px" cellpadding="0" cellspacing="0"><tr><td style="width:290px" valign="top"><![endif]-->
-                      <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:290px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="right" bgcolor="#111c30" style="padding:0;Margin:0;padding-top:40px">
-                                  <h3 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#ffffff">24/7 Support available</h3>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td align="right" style="padding:0;Margin:0;padding-top:15px;padding-bottom:40px">
-                                  <h1 style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#ffffff"><a target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:none;color:#ffffff;font-size:25px" href="tel:123456789">+1 (224) 374-9132</a></h1>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td><td style="width:20px"></td><td style="width:290px" valign="top"><![endif]-->
-                      <table class="es-right" cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right">
-                        <tr class="es-mobile-hidden" style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:290px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr class="es-hidden" style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;font-size:0"><img src="https://dqnikc.stripocdn.email/content/guids/CABINET_07a93da1e5b78aa2a3bf3298ff8b9c0b/images/27171507639425565.jpg" alt="Girl" title="Girl" class="adapt-img" width="185" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td></tr></table><![endif]-->
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-          <table cellpadding="0" cellspacing="0" class="es-footer" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%;background-color:transparent;background-repeat:repeat;background-position:center top">
-            <tr style="border-collapse:collapse">
-              <td align="center" style="padding:0;Margin:0">
-                <table class="es-footer-body" cellspacing="0" cellpadding="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#FFD500;width:600px">
-                  <tr style="border-collapse:collapse">
-                    <td align="left" bgcolor="#111c30" style="padding:20px;Margin:0;background-color:#111c30"><!--[if mso]><table style="width:560px" cellpadding="0" cellspacing="0"><tr><td style="width:178px" valign="top"><![endif]-->
-                      <table class="es-left" cellspacing="0" cellpadding="0" align="left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left">
-                        <tr style="border-collapse:collapse">
-                          <td class="es-m-p0r es-m-p20b" valign="top" align="center" style="padding:0;Margin:0;width:178px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td align="center" style="padding:0;Margin:0;font-size:0px"><img src="https://dqnikc.stripocdn.email/content/guids/CABINET_db68e1f7cb59a8d7120537d4a94c22f80787d61014533eefc36d9e53dc8f9557/images/light_water_limo_final_logo.png" alt="Quick taxi logo" title="Quick taxi logo" width="155" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td esdev-links-color="#333333" align="center" style="padding:0;Margin:0;padding-top:10px">
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><a target="_blank" href="https://lightwaterlimo.com/about-us/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#efefef;font-size:14px">Who we are</a></p>
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><a target="_blank" href="https://lightwaterlimo.com/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#efefef;font-size:14px">Services</a></p>
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><a target="_blank" href="https://lightwaterlimo.com/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#efefef;font-size:14px">Our cars</a></p>
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><a target="_blank" href="https://lightwaterlimo.com/bookingmodule/lwl_front/book_a_ride" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#efefef;font-size:14px">Book online</a></p>
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px"><a target="_blank" href="https://lightwaterlimo.com/contact-us/" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#efefef;font-size:14px">Contacts</a></p>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table><!--[if mso]></td><td style="width:20px"></td><td style="width:362px" valign="top"><![endif]-->
-                      <table cellspacing="0" cellpadding="0" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                        <tr style="border-collapse:collapse">
-                          <td align="left" style="padding:0;Margin:0;width:362px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-l" align="left" style="padding:0;Margin:0;padding-bottom:10px">
-                                  <h3 style="Margin:0;line-height:24px;mso-line-height-rule:exactly;font-family:tahoma, verdana, segoe, sans-serif;font-size:20px;font-style:normal;font-weight:normal;color:#ffffff">Contact us</h3>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-c" align="left" style="padding:0;Margin:0">
                                   <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px">2545 West Peterson Avenue, Suite 101, Chicago, Illinois,&nbsp;60659</p>
-                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px"><a target="_blank" href="mailto:info@lightwaterlimo.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#ffffff;font-size:14px">info@lightwaterlimo.co</a>m<br></p>
-                                </td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td style="padding:0;Margin:0"><a href="www.lightwaterlimo.com" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#fff;font-size:14px">Visit our website</a></td>
-                              </tr>
-                              <tr style="border-collapse:collapse">
-                                <td class="es-m-txt-c" align="left" style="padding:0;Margin:0;padding-top:10px;font-size:0">
-                                  <table class="es-social es-table-not-adapt" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
-                                    <tr style="border-collapse:collapse">
-                                      <td valign="top" align="center" style="padding:0;Margin:0;padding-right:10px"><img title="Twitter" src="https://dqnikc.stripocdn.email/content/assets/img/social-icons/logo-white/twitter-logo-white.png" alt="Tw" width="24" height="24" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td>
-                                      <td valign="top" align="center" style="padding:0;Margin:0;padding-right:10px"><img title="Facebook" src="https://dqnikc.stripocdn.email/content/assets/img/social-icons/logo-white/facebook-logo-white.png" alt="Fb" width="24" height="24" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td>
-                                      <td valign="top" align="center" style="padding:0;Margin:0"><img title="Instagram" src="https://dqnikc.stripocdn.email/content/assets/img/social-icons/logo-white/instagram-logo-white.png" alt="Ig" width="24" height="24" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic"></td>
-                                    </tr>
-                                  </table>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px"><a href="tel:123456789">+1 (224)&nbsp;400-8714</a></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px"><br></p>
+                                  <p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#ffffff;font-size:14px"> <a href="mailto:info@lightwaterlimo.com">info@lightwaterlimo.com</a></p>
                                 </td>
                               </tr>
                             </table>
@@ -797,7 +432,6 @@
       </tr>
     </table>
   </div>
-  <div style="position:absolute;left:-9999px;top:-9999px"></div>
 </body>
 
 </html>

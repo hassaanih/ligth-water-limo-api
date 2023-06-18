@@ -44,6 +44,8 @@ Route::get('bookings/find/{email}', 'App\Http\Controllers\Api\Web\BookingControl
 Route::post('bookings/assign/driver', 'App\Http\Controllers\Api\Web\BookingController@assignDriver');
 Route::post('bookings/assign/self', 'App\Http\Controllers\Api\Web\BookingController@assignSelf');
 Route::post('bookings/cancel', 'App\Http\Controllers\Api\Web\BookingController@cancel');
+Route::post('bookings/complete', 'App\Http\Controllers\Api\Web\BookingController@completeBooking');
+// completeBooking
 Route::post('coupons/add', 'App\Http\Controllers\Api\Web\CouponController@create');
 Route::get('coupons/list', 'App\Http\Controllers\Api\Web\CouponController@index');
 Route::post('coupon/apply', 'App\Http\Controllers\Api\Web\CouponController@applyToBooking');
