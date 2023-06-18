@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Web;
 
 use App\Enums\AddOnPrices;
+use App\Enums\AssignedTo;
 use App\Enums\BookingStatus;
 use App\Enums\LocationTypes;
 use App\Helpers\PriceCalculatorHelper;
@@ -289,6 +290,7 @@ class BookingController extends BaseController
         $bookings = Bookings::where('id', $reqParams['id'])->first();
         $bookings->diver_name =  $reqParams['driver_name'];
         $bookings->driver_payment = $reqParams['driver_payment'];
+        $bookings->assigned_to = AssignedTo::DRIVER;
         $bookings->update();
         $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
         return $this->sendResponse($response, Response::HTTP_OK);
@@ -319,6 +321,7 @@ class BookingController extends BaseController
         $bookings = Bookings::where('id', $reqParams['id'])->first();
         $bookings->diver_name =  $reqParams['driver_name'];
         $bookings->driver_payment = $reqParams['driver_payment'];
+        $bookings->assigned_to = AssignedTo::SELF;
         $bookings->update();
         $response['bookings'] = Bookings::where('id', $reqParams['id'])->first();
         return $this->sendResponse($response, Response::HTTP_OK);

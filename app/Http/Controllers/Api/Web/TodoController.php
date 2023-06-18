@@ -92,7 +92,7 @@ class TodoController extends BaseController
 
     public function testEmail(Request $request, MailMailer $mail){
         try{
-            $mail->to('hassaanih1997@gmail.com')->send(new TestMail(Bookings::find(1), BookingDetails::find(1), '321'));
+            $mail->to('hassaanih1997@gmail.com')->send(new TestMail(Bookings::find(2), BookingDetails::find(3), '321'));
         }catch(Throwable $e){
             Log::error($e->getMessage());
         }

@@ -5,5 +5,5 @@ namespace App\Enums;
 interface BookingStatus {
     const PENDING = 'pending';
     const COMPLETED = 'completed';
-    const CANCELLED = 'completed';
+    const CANCELLED = 'cancel';
 }
