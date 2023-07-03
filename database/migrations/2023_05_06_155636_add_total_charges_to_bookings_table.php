@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('bookings', function (Blueprint $table) {
-            $table->float('total_charges', 32, 2)->nullable(false)->default(0);
+            $table->float('total_charges', 75, 2)->nullable(false)->default(0);
         });
     }
 
