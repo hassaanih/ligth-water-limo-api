@@ -106,8 +106,8 @@ class BookingController extends BaseController
             $booking_details->total_duration_minutes = $reqParams['total_duration_minutes'];
             $total_minutes = (Carbon::now()->setTime($booking_details->total_duration_hours, 0, 0)->hour * 60) + $booking_details->total_duration_minutes;
             Log::debug("Total Minutes: " . $total_minutes);
-            $hourly_sedan_price += number_format(PriceCalculatorHelper::getPrice($booking_details->total_km, 1, true, $total_minutes), 2);
-            $hourly_suv_price +=  number_format(PriceCalculatorHelper::getPrice($booking_details->total_km, 2, true, $total_minutes), 2);
+            $hourly_sedan_price += PriceCalculatorHelper::getPrice($booking_details->total_km, 1, true, $total_minutes);
+            $hourly_suv_price +=  PriceCalculatorHelper::getPrice($booking_details->total_km, 2, true, $total_minutes);
         }
 
         $booking_details->update();
