@@ -217,6 +217,8 @@ class UserController extends BaseController
                 return response()->json($response, Response::HTTP_BAD_REQUEST);
             }
             $code = md5(time());
+            $user->code = $code;
+            $user->update();
             Mail::to($user->email)->send(new ResetPasswordMail($code));
             return $this->sendResponse([], Response::HTTP_OK);
         } catch (Throwable $e) {
