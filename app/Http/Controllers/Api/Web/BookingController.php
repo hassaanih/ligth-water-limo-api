@@ -466,4 +466,26 @@ class BookingController extends BaseController
             return response()->json($response, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
+    
+    public function update(Request $request)
+    {
+        $reqParams = $request->all();
+        return $reqParams;
+        $bookingDetail = Bookings::findOrFail($reqParams['booking_id']);
+        $booking = BookingDetails::findOrFail($reqParams['booking_details_id']);
+        $booking->first_name = $reqParams['first_name'];
+        $booking->last_name = $reqParams['last_name'];
+        $booking->tip_for_driver = $reqParams['tip_for_driver'];
+        $booking->diver_name = $reqParams['diver_name'];
+        $booking->driver_payment = $reqParams['driver_payment'];
+        $booking->specail_intruction = $reqParams['specail_intruction'];
+        $bookingDetail->pickup_location = $reqParams['pickup_location'];
+        $bookingDetail->drop_location = $reqParams['drop_location'];
+        $bookingDetail->pickup_time = $reqParams['pickup_time'];
+        $bookingDetail->pickup_date = $reqParams['pickup_date'];
+        $booking->update();
+        $bookingDetail->update();
+
+        return response()->json(['message' => 'Booking detail updated successfully'], Response::HTTP_OK);
+    }
 }

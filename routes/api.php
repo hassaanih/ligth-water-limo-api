@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
 });
 
 Route::post('booking/details/create', 'App\Http\Controllers\Api\Web\BookingController@createBookingDetails');
+Route::post('booking/details/update', 'App\Http\Controllers\Api\Web\BookingController@update');
 Route::post('booking/create', 'App\Http\Controllers\Api\Web\BookingController@createBooking');
 Route::post('booking/vehicle/select', 'App\Http\Controllers\Api\Web\BookingController@selectVehicle');
 Route::get('vehicles/find/all', 'App\Http\Controllers\Api\Web\LookupVehiclesController@findAll');
