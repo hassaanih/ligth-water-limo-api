@@ -471,8 +471,8 @@ class BookingController extends BaseController
     {
         $reqParams = $request->all();
         // return $reqParams;
-        $bookingDetail = Bookings::findOrFail($reqParams['booking_id']);
-        $booking = BookingDetails::findOrFail($reqParams['booking_details_id']);
+        $booking = Bookings::findOrFail($reqParams['booking_id']);
+        $bookingDetail = BookingDetails::findOrFail($reqParams['booking_details_id']);
         $booking->first_name = $reqParams['first_name'];
         $booking->last_name = $reqParams['last_name'];
         $booking->tip_for_driver = $reqParams['tip_for_driver'];
