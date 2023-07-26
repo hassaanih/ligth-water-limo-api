@@ -470,7 +470,7 @@ class BookingController extends BaseController
     public function update(Request $request)
     {
         $reqParams = $request->all();
-        return $reqParams;
+        // return $reqParams;
         $bookingDetail = Bookings::findOrFail($reqParams['booking_id']);
         $booking = BookingDetails::findOrFail($reqParams['booking_details_id']);
         $booking->first_name = $reqParams['first_name'];
