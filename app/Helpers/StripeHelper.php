@@ -14,6 +14,7 @@ class StripeHelper
 {
   public static function chargePayment($cardDetails, $amount)
   {
+    Log::info("charge ");
     try {
       $token = StripeHelper::createToken($cardDetails);
 
@@ -21,18 +22,21 @@ class StripeHelper
 
       $charge = StripeHelper::createCharge($token, $amount, env('STRIPE_SECRET'));
 
-      
 
-      $status = $charge['status'];
-
-      if ($status === 'succeeded') {
-        return $status;
-      } else {
-        Log::error($charge);
-        return false;
+      if(array_key_exists('error', $charge)){
+        Log::info($charge['error']['code']);
+        return ['status' => $charge['error']['code']];
+      }else{
+        $status = $charge['status'];
+        if ($status === 'succeeded') {
+          return $status;
+        } else {
+          Log::error($charge);
+          return false;
+        }
       }
     } catch (Throwable $e) {
-      Log::error('chargePayment' . $e->getMessage());
+      Log::error('chargePayment ' . $e->getMessage());
       return false;
     }
   }
@@ -114,7 +118,7 @@ class StripeHelper
       $error = curl_error($ch);
       curl_close($ch);
       echo 'cURL Error: ' . $error;
-      exit;
+      return $error;
     }
 
     $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -122,13 +126,13 @@ class StripeHelper
     if ($httpCode !== 200) {
       // Handle API error
       curl_close($ch);
-      return false;
+      return json_decode($response, true);
     }
 
     curl_close($ch);
 
     $charge = json_decode($response, true);
-
+    Log::error($charge);
     // Access the charge details as needed
     return ['charge_id' => $charge['id'], 'status' => $charge['status']];
   }
