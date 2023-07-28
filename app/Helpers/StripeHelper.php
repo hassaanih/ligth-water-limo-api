@@ -95,7 +95,7 @@ class StripeHelper
   public static function createCharge($token, $amount, $apiKey)
   {
     $data = [
-      'amount' => $amount,
+      'amount' => $amount * 100,
       'currency' => 'usd',
       'description' => 'Charge for booking',
       'source' => $token,

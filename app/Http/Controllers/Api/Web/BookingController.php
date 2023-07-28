@@ -149,7 +149,7 @@ class BookingController extends BaseController
             return response()->json($response, Response::HTTP_BAD_REQUEST);
         }
         Log::debug($reqParams['total_charges']);
-        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], intval($reqParams['total_charges']));
+        $paymentResponse = StripeHelper::chargePayment($reqParams['card_details'], $reqParams['total_charges']);
         // dd($paymentResponse);
         if ($paymentResponse === 'succeeded') {
             $booking = new Bookings($reqParams);
