@@ -156,6 +156,7 @@ class BookingController extends BaseController
             $booking->save();
             $response['booking'] = $booking;
             $mail->to($reqParams['email'])->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
+            $mail->to('info@lightwaterlimo.com')->send(new TestMail($booking, $booking_details, substr($reqParams['card_details']['card_number'], -4)));
             return $this->sendResponse($response, Response::HTTP_OK);
         }
 
